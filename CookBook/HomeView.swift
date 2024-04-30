@@ -13,9 +13,23 @@ struct HomeView: View {
     @Query private var recipes: [Recipe]
     
     var body: some View {
-        Text("Home")
+        NavigationView{
+            VStack{
+                
+            
+            Text("Home")
+            NavigationLink(
+                destination: CookBookView(),
+                label: {Text("CookBook")
+                }
+            )
+            
+        }
+            }
+            
+        }
     }
-}
+
 
 
 #Preview {
