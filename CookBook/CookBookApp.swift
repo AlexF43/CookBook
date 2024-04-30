@@ -12,7 +12,7 @@ import SwiftData
 struct CookBookApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Recipe.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +25,7 @@ struct CookBookApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
         .modelContainer(sharedModelContainer)
     }
