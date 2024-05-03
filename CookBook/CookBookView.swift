@@ -18,6 +18,7 @@ struct CookBookView: View {
         Button("recipes"){
             modelContext.insert(Recipe(id: 1, title: "Pasta", description: "Yummy", imgUrl: "https://www.budgetbytes.com/wp-content/uploads/2013/07/Creamy-Spinach-Tomato-Pasta-bowl-500x500.jpg", ingredients: [Ingredient(name: "Pasta", amount: 2, unit: "grams", descName: "2 grams of Pasta")], steps: ["1. Cook Pasta", "2. Eat Pasta"]))
         }
+        Text("wah")
         List{
             ForEach(recipes) { recipe in
                 Text(recipe.title)
