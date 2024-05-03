@@ -24,11 +24,11 @@ struct HomeView: View {
                 }
             )
             
-        }
             }
-            
         }
+        
     }
+}
 
 
 
