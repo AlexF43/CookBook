@@ -16,6 +16,7 @@
 		070A02A72BE0964A0069B7CA /* AddRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A02A62BE0964A0069B7CA /* AddRecipeView.swift */; };
 		070A02A92BE096570069B7CA /* CookBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A02A82BE096570069B7CA /* CookBookView.swift */; };
 		070A02AD2BE096A50069B7CA /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A02AC2BE096A50069B7CA /* RecipeDetailView.swift */; };
+		993E3D492BE493AD00881B89 /* RecipeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993E3D482BE493AD00881B89 /* RecipeRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		070A02A62BE0964A0069B7CA /* AddRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeView.swift; sourceTree = "<group>"; };
 		070A02A82BE096570069B7CA /* CookBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookBookView.swift; sourceTree = "<group>"; };
 		070A02AC2BE096A50069B7CA /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
+		993E3D482BE493AD00881B89 /* RecipeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				070A02A42BDF8B520069B7CA /* HomeView.swift */,
 				070A02A62BE0964A0069B7CA /* AddRecipeView.swift */,
 				070A02A82BE096570069B7CA /* CookBookView.swift */,
+				993E3D482BE493AD00881B89 /* RecipeRowView.swift */,
 				070A02AC2BE096A50069B7CA /* RecipeDetailView.swift */,
 				070A02A02BDF61360069B7CA /* RecipeModel.swift */,
 				070A02A22BDF64830069B7CA /* IngredientModel.swift */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				070A02A72BE0964A0069B7CA /* AddRecipeView.swift in Sources */,
+				993E3D492BE493AD00881B89 /* RecipeRowView.swift in Sources */,
 				070A02AD2BE096A50069B7CA /* RecipeDetailView.swift in Sources */,
 				070A02A12BDF61360069B7CA /* RecipeModel.swift in Sources */,
 				070A02A52BDF8B520069B7CA /* HomeView.swift in Sources */,
