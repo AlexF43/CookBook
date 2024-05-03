@@ -13,14 +13,24 @@ struct RecipeRowView: View {
         HStack{
             AsyncImage(url: URL(string: "https://www.budgetbytes.com/wp-content/uploads/2013/07/Creamy-Spinach-Tomato-Pasta-bowl-500x500.jpg")) { image in
                 image.image?.resizable()
-                    .frame(width: 80, height: 80)
+                    .frame(width: 100, height: 100)
                     .padding(0)
             }
-            VStack{
+            VStack(alignment: .leading, content: {
+                
                 Text(recipe.title)
+                    .font(.system(size: 20, weight: .bold))
                 Text(recipe.desc)
-            }.multilineTextAlignment(.leading)
-        }
+                    .foregroundColor(.gray)
+                
+                HStack{
+                    Image(systemName: "clock")
+                        .foregroundColor(.gray)
+//                    Text(recipe.time)
+                }
+            }).padding(5)
+            .multilineTextAlignment(.leading)
+        }.listRowInsets(.init())
     }
 }
 
