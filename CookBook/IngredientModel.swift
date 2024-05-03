@@ -8,7 +8,7 @@
 import Foundation
 import SwiftData
 
-struct Ingredient: Codable {
+struct Ingredient: Codable {    
     
     
     var name: String

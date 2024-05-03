@@ -30,7 +30,7 @@ struct CookBookView: View {
                     }
                 })
             }.listRowSpacing(10)
-        }
+        }.navigationTitle("CookBook")
     }
 }
 
