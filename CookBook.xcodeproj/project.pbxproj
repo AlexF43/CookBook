@@ -76,19 +76,10 @@
 			isa = PBXGroup;
 			children = (
 				070A02902BDF5D310069B7CA /* CookBookApp.swift */,
-				070A02A42BDF8B520069B7CA /* HomeView.swift */,
-				070A02B62BE60D6F0069B7CA /* RecipeSearchResults.swift */,
-				070A02B22BE60AA80069B7CA /* HomeContentView.swift */,
-				070A02B02BE608CF0069B7CA /* SearchView.swift */,
-				070A02B42BE60CA20069B7CA /* HomeViewModel.swift */,
-				070A02A62BE0964A0069B7CA /* AddRecipeView.swift */,
-				993E3D4A2BE5102F00881B89 /* AddIngredientView.swift */,
-				070A02A82BE096570069B7CA /* CookBookView.swift */,
-				070A02AE2BE5C5F60069B7CA /* RecipeSearchService.swift */,
-				993E3D482BE493AD00881B89 /* RecipeRowView.swift */,
-				070A02AC2BE096A50069B7CA /* RecipeDetailView.swift */,
-				070A02A02BDF61360069B7CA /* RecipeModel.swift */,
-				070A02A22BDF64830069B7CA /* IngredientModel.swift */,
+				070A02B92BE619880069B7CA /* Views */,
+				070A02BB2BE619960069B7CA /* ViewModels */,
+				070A02BC2BE619A10069B7CA /* Model */,
+				070A02B82BE619830069B7CA /* Services */,
 				070A02962BDF5D320069B7CA /* Assets.xcassets */,
 				070A02982BDF5D320069B7CA /* Preview Content */,
 			);
@@ -101,6 +92,47 @@
 				070A02992BDF5D320069B7CA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		070A02B82BE619830069B7CA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				070A02AE2BE5C5F60069B7CA /* RecipeSearchService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		070A02B92BE619880069B7CA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				070A02AC2BE096A50069B7CA /* RecipeDetailView.swift */,
+				070A02A62BE0964A0069B7CA /* AddRecipeView.swift */,
+				070A02A42BDF8B520069B7CA /* HomeView.swift */,
+				070A02B62BE60D6F0069B7CA /* RecipeSearchResults.swift */,
+				070A02B02BE608CF0069B7CA /* SearchView.swift */,
+				070A02B22BE60AA80069B7CA /* HomeContentView.swift */,
+				993E3D482BE493AD00881B89 /* RecipeRowView.swift */,
+				070A02A82BE096570069B7CA /* CookBookView.swift */,
+				993E3D4A2BE5102F00881B89 /* AddIngredientView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		070A02BB2BE619960069B7CA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				070A02B42BE60CA20069B7CA /* HomeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		070A02BC2BE619A10069B7CA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				070A02A02BDF61360069B7CA /* RecipeModel.swift */,
+				070A02A22BDF64830069B7CA /* IngredientModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
