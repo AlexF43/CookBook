@@ -9,26 +9,41 @@ import SwiftUI
 
 struct AddIngredientView: View {
     @State private var ingredient: String = ""
-    @State var ingredients: [Ingredient]
+    @State private var amount: String = ""
     @State private var unit: String = ""
-    let units = ["g", "kg", "mL", "L"]
+
+    @State var ingredients: [Ingredient]
+    let ingredientsModel = IngredientsModel()
     var body: some View {
-        TextField("Ingredient", text: $ingredient)
-        Picker("Select a unit", selection: $unit) {
-            ForEach(units, id: \.self) {
-                Text($0)
+        VStack{
+            HStack {
+                TextField("Ingredient", text: $ingredient)
+                TextField("Amount", text: $amount)
+                Picker("Select a unit", selection: $unit) {
+                    ForEach(Array(ingredientsModel.units.keys), id: \.self) {
+                        Text($0)
+                    }
+                }
+                .pickerStyle(.menu)
+                Button("Add Ingredient"){
+                    let descName = ingredientsModel.getDescName(amount: Double(amount) ?? 0, unit: unit, name: ingredient)
+                    let newIngredient = Ingredient(name: ingredient, amount: Double(amount) ?? 0, unit: unit, descName: descName)
+                    ingredients.append(newIngredient)
+                }
+            }
+            List(ingredients) { ingredient in
+                ForEach(ingredients) { ingredient in
+                    Text(ingredient.descName)
+                }
             }
         }
-        .pickerStyle(.menu)
         
-//        List(ingredients) { ingredient in
-////            ForEach(ingredients) { ingredient in
-//                Text(ingredient.name)
-//            }
-        }
+        
     }
-
-
-//#Preview {
-//    AddIngredientView()
-//}
+ 
+    
+    
+    //#Preview {
+    //    AddIngredientView()
+    //}
+}
