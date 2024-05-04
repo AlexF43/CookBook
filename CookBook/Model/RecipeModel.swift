@@ -17,7 +17,8 @@ final class RecipeApiResponse: Decodable {
 
 @Model
 final class Recipe: Decodable {
-    var id: Int
+    var id: UUID
+    var apiId: Int?
     var title: String
     var desc: String?
     var imgUrl: String
@@ -26,7 +27,8 @@ final class Recipe: Decodable {
     var steps: [String]?
     
     init(id: Int, title: String, description: String ,imgUrl: String, cookingTime: Int, ingredients: [Ingredient], steps: [String]) {
-        self.id = id
+        self.id = UUID()
+        self.apiId = id
         self.title = title
         self.desc = description
         self.imgUrl = imgUrl
@@ -37,7 +39,8 @@ final class Recipe: Decodable {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(Int.self, forKey: .id)
+        self.id = UUID()
+        self.apiId = try container.decode(Int.self, forKey: .id)
         self.title = try container.decode(String.self, forKey: .title)
         self.imgUrl = try container.decode(String.self, forKey: .image)
     }
