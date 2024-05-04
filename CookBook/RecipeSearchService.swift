@@ -16,7 +16,7 @@ import Foundation
 //}
 
 
-func getRecipes(searchTerm: String) async throws -> [Recipe] {
+func getRecipes(searchTerm: String, callback: @escaping (_: [Recipe]) -> Void) -> Void {
 //    var recipes: [Recipe] = []
 //    
 //    let url = URL(string: "https://api.spoonacular.com/recipes/complexSearch?query=" + searchTerm)!
@@ -53,6 +53,7 @@ func getRecipes(searchTerm: String) async throws -> [Recipe] {
                 print(data)
                 let recipes = try JSONDecoder().decode(RecipeApiResponse.self, from: data)
                 print("We got \(recipes.number) results in this request")
+                callback(recipes.results)
 //                let responseData = try JSONDecoder().decode(ResponseData.self, from: data)
 //                let recipes = responseData.recipes
             } catch {
@@ -65,7 +66,7 @@ func getRecipes(searchTerm: String) async throws -> [Recipe] {
     }
     
     task.resume()
-    return []
+//    return []
 }
     
     
