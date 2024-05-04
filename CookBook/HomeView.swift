@@ -15,20 +15,23 @@ struct HomeView: View {
     var body: some View {
         NavigationView{
             VStack{
-                
+                Text("Home")
+                NavigationLink(
+                    destination: CookBookView(),
+                    label: {Text("CookBook")
+                    }
+                )
+                    NavigationLink(
+                        destination: AddRecipeView(),
+                        label: {Text("Add Recipe")
+                        }
+                    )
             
-            Text("Home")
-            NavigationLink(
-                destination: CookBookView(),
-                label: {Text("CookBook")
                 }
-            )
-            
             }
+            
         }
-        
     }
-}
 
 
 
