@@ -25,7 +25,7 @@ struct CookBookApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            HomeView(recipesFromRequest: [])
         }
         .modelContainer(for: Recipe.self)
 

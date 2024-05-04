@@ -43,7 +43,7 @@ struct AddRecipeView: View {
            
             Spacer()
                 Button("Save") {
-                    let newRecipe = Recipe(id: 2, title: title, description: description, imgUrl: "//imageURL", ingredients: ingredients, steps: steps)
+                    let newRecipe = Recipe(id: 2, title: title, description: description, imgUrl: "//imageURL", cookingTime: 15, ingredients: ingredients, steps: steps)
                     modelContext.insert(newRecipe)
                     CookBookView()
                 }
