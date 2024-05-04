@@ -11,38 +11,26 @@ import SwiftData
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var recipes: [Recipe]
-    @State var recipesFromRequest: [Recipe]
-    
+    @StateObject var homeViewModel = HomeViewModel()
+    //    @State var recipesFromSearch: [Recipe]
     
     var body: some View {
-        NavigationView{
-            VStack{
-                Text("Home")
-                NavigationLink(
-                    destination: CookBookView(),
-                    label: {Text("CookBook")
-                    }
-                )
-                    NavigationLink(
-                        destination: AddRecipeView(),
-                        label: {Text("Add Recipe")
-                        }
-                    )
+        NavigationStack{
             
-                }
-                .task {
-                    
-                    getRecipes(searchTerm: "pasta") { recipes in
-                        print("got som recipes")
-                    }
-               }
+            SearchView(homeViewModel: homeViewModel)
+                .fixedSize()
+            if(homeViewModel.searchIsActive) {
+                RecipeSearchResults(homeViewModel: homeViewModel, searchedRecipes: [])
+            } else {
+                HomeContentView(homeViewModel: homeViewModel)
             }
-            
         }
+        .navigationTitle("Home")
     }
+}
 
 
 
 #Preview {
-    HomeView(recipesFromRequest: [])
+    HomeView()
 }

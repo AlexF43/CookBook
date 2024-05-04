@@ -11,7 +11,7 @@ struct RecipeRowView: View {
     var recipe: Recipe;
     var body: some View {
         HStack{
-            AsyncImage(url: URL(string: "https://www.budgetbytes.com/wp-content/uploads/2013/07/Creamy-Spinach-Tomato-Pasta-bowl-500x500.jpg")) { image in
+            AsyncImage(url: URL(string: recipe.imgUrl)) { image in
                 image.image?.resizable()
                     .frame(width: 100, height: 100)
                     .padding(0)
