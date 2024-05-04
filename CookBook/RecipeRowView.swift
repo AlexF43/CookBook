@@ -20,7 +20,7 @@ struct RecipeRowView: View {
                 
                 Text(recipe.title)
                     .font(.system(size: 20, weight: .bold))
-                Text(recipe.desc)
+                Text(recipe.desc ?? "no description")
                     .foregroundColor(.gray)
                 
                 HStack{

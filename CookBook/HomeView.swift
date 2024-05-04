@@ -11,6 +11,8 @@ import SwiftData
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var recipes: [Recipe]
+    @State var recipesFromRequest: [Recipe]
+    
     
     var body: some View {
         NavigationView{
@@ -28,6 +30,13 @@ struct HomeView: View {
                     )
             
                 }
+                .task {
+                    do {
+                        recipesFromRequest = try await getRecipes(searchTerm: "pasta")
+                    } catch {
+                        print("failed")
+                    }
+               }
             }
             
         }
@@ -36,5 +45,5 @@ struct HomeView: View {
 
 
 #Preview {
-    HomeView()
+    HomeView(recipesFromRequest: [])
 }
