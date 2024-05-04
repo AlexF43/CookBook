@@ -31,10 +31,9 @@ struct HomeView: View {
             
                 }
                 .task {
-                    do {
-                        recipesFromRequest = try await getRecipes(searchTerm: "pasta")
-                    } catch {
-                        print("failed")
+                    
+                    getRecipes(searchTerm: "pasta") { recipes in
+                        print("got som recipes")
                     }
                }
             }
