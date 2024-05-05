@@ -26,7 +26,6 @@ struct AddRecipeView: View {
                     ForEach (tabOptions.indices, id: \.self ) { index in
                         Text("\(tabOptions[index])")
                             .fontWeight(tabOptions[index] == tabOptions[tabSelection] ? .bold : .regular)
-    //                        .frame(maxWidth: .infinity)
                             .border(Color.black, width: tabOptions[index] == tabOptions[tabSelection] ? 1 : 0)
             
                 }
@@ -55,11 +54,9 @@ struct AddRecipeView: View {
             Spacer()
             
                 Button("Save") {
-                    let newRecipe = Recipe(id: 2, title: title, description: description, imgUrl: "//imageURL", cookingTime: 15, ingredients: ingredients, steps: steps)
+                    let newRecipe = recipeViewModel.createRecipe()
                     modelContext.insert(newRecipe)
-                    print("added recipe")
                     saved = true
-                    CookBookView()
                 }.buttonStyle(.borderedProminent)
                 .disabled(recipeViewModel.title.isEmpty || recipeViewModel.description.isEmpty || recipeViewModel.ingredients.isEmpty || recipeViewModel.steps.isEmpty)
         

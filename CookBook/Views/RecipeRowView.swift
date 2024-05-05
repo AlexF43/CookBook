@@ -26,7 +26,8 @@ struct RecipeRowView: View {
                 HStack{
                     Image(systemName: "clock")
                         .foregroundColor(.gray)
-//                    Text(recipe.time)
+                    Text("\(recipe.cookingTime!) MINS")
+                        .foregroundColor(.gray)
                 }
             }).padding(5)
             .multilineTextAlignment(.leading)
