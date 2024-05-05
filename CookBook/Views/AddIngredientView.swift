@@ -11,9 +11,11 @@ struct AddIngredientView: View {
     @State private var ingredient: String = ""
     @State private var amount: String = ""
     @State private var unit: String = ""
-
-    @State var ingredients: [Ingredient]
+    @State var ingredients = [Ingredient]()
+//    @State var ingredientsModel: IngredientsModel
     let ingredientsModel = IngredientsModel()
+    @ObservedObject var recipeViewModel: RecipeViewModel
+    
     var body: some View {
         VStack{
             HStack {
@@ -26,16 +28,18 @@ struct AddIngredientView: View {
                 }
                 .pickerStyle(.menu)
                 Button("Add Ingredient"){
+                    print(ingredient)
                     let descName = ingredientsModel.getDescName(amount: Double(amount) ?? 0, unit: unit, name: ingredient)
                     let newIngredient = Ingredient(name: ingredient, amount: Double(amount) ?? 0, unit: unit, descName: descName)
-                    ingredients.append(newIngredient)
+                    recipeViewModel.ingredients.append(newIngredient)
                 }
             }
-            List(ingredients) { ingredient in
-                ForEach(ingredients) { ingredient in
+            List(recipeViewModel.ingredients) { ingredient in
+//                ForEach(recipeViewModel.ingredients) { ingredient in
                     Text(ingredient.descName)
-                }
+//                }
             }
+    
         }
         
         

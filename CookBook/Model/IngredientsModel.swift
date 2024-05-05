@@ -11,7 +11,6 @@ struct IngredientsModel {
     
     func getAmount(amount: Double) -> String {
         if amount.truncatingRemainder(dividingBy: 1) == 0{
-            print("integer value")
             return String(Int(amount))
         } else {
             return String(amount)
