@@ -7,6 +7,8 @@
 
 import Foundation
 import SwiftData
+import UIKit
+import SwiftUI
 
 final class RecipeApiResponse: Decodable {
     var results: [Recipe];
@@ -21,17 +23,19 @@ final class Recipe: Decodable {
     var apiId: Int?
     var title: String
     var desc: String?
-    var imgUrl: String
+    var imgUrl: String?
+//    var userImportedImage: Image?
     var cookingTime: Int?
     var ingredients: [Ingredient]?
     var steps: [String]?
     
-    init(id: Int?, title: String, description: String ,imgUrl: String, cookingTime: Int, ingredients: [Ingredient], steps: [String]) {
+    init(id: Int?, title: String, description: String ,imgUrl: String?, cookingTime: Int, ingredients: [Ingredient], steps: [String]) {
         self.id = UUID()
         self.apiId = id
         self.title = title
         self.desc = description
         self.imgUrl = imgUrl
+//        self.userImportedImage = userImportedImage
         self.cookingTime = cookingTime;
         self.ingredients = ingredients
         self.steps = steps
