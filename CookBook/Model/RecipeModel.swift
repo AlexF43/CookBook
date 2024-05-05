@@ -26,7 +26,7 @@ final class Recipe: Decodable {
     var ingredients: [Ingredient]?
     var steps: [String]?
     
-    init(id: Int, title: String, description: String ,imgUrl: String, cookingTime: Int, ingredients: [Ingredient], steps: [String]) {
+    init(id: Int?, title: String, description: String ,imgUrl: String, cookingTime: Int, ingredients: [Ingredient], steps: [String]) {
         self.id = UUID()
         self.apiId = id
         self.title = title
