@@ -10,6 +10,7 @@ import SwiftUI
 struct AddDescriptionView: View {
     @State private var title: String = ""
     @State private var description: String = ""
+    @State private var cookingTime: String = ""
     @ObservedObject var recipeViewModel: RecipeViewModel
     
     var body: some View {
@@ -19,6 +20,9 @@ struct AddDescriptionView: View {
                 .controlSize(.large)
             
             TextField("Description", text: $recipeViewModel.description)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            TextField("Cooking Time", text: $recipeViewModel.cookingTime)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
         }
