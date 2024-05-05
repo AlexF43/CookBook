@@ -7,6 +7,7 @@
 
 import Foundation
 struct IngredientsModel {
+    let ingredients = [Ingredient]()
     let units = ["g": "gram", "kg": "kilogram", "mL": "millilitre", "L": "litre", "item": ""]
     
     func getAmount(amount: Double) -> String {
