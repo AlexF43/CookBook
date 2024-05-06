@@ -20,14 +20,16 @@ struct RecipeRowView: View {
                 
                 Text(recipe.title)
                     .font(.system(size: 20, weight: .bold))
-                Text(recipe.desc ?? "no description")
+                Text(recipe.desc ?? "")
                     .foregroundColor(.gray)
                 
-                HStack{
-                    Image(systemName: "clock")
-                        .foregroundColor(.gray)
-                    Text("\(recipe.cookingTime!) MINS")
-                        .foregroundColor(.gray)
+                if(recipe.cookingTime != nil) {
+                    HStack{
+                        Image(systemName: "clock")
+                            .foregroundColor(.gray)
+                        Text("\(recipe.cookingTime ?? 0) MINS")
+                            .foregroundColor(.gray)
+                    }
                 }
             }).padding(5)
             .multilineTextAlignment(.leading)
