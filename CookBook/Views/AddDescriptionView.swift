@@ -14,12 +14,12 @@ struct AddDescriptionView: View {
     @State private var cookingTime: String = ""
     @State private var recipeImageItem: PhotosPickerItem?
     @State private var recipeImage: Image?
-    @State private var imageData: Data
+    @State private var imageData: Data?
     @ObservedObject var recipeViewModel: RecipeViewModel
     
     var body: some View {
         VStack{
-            PhotosPicker("Upload a pcture", selection: $recipeImageItem, matching: .images)
+            PhotosPicker("Upload a picture", selection: $recipeImageItem, matching: .images)
                 recipeImage?
                     .resizable()
                     .scaledToFit()
@@ -39,7 +39,11 @@ struct AddDescriptionView: View {
         .onChange(of: recipeImageItem) {
             Task {
                 if let loaded = try? await recipeImageItem?.loadTransferable(type: Image.self) {
-                    recipeImage = loaded
+//                    if let data =  {
+//                        Image(data)
+//                    }
+//                    recipeImage = UIImage(image: loaded)
+                    
                 } else {
                     print("Failed")
                 }
