@@ -23,6 +23,7 @@ struct RecipeRowView: View {
                 Text(recipe.desc ?? "")
                     .foregroundColor(.gray)
                 
+
                 if(recipe.cookingTime != nil) {
                     HStack{
                         Image(systemName: "clock")

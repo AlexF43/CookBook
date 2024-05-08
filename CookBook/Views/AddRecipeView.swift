@@ -21,20 +21,28 @@ struct AddRecipeView: View {
 
     var body: some View {
         VStack {
-            HStack(){
-                Spacer()
+                HStack(spacing: 0){
+                    Spacer()
                     ForEach (tabOptions.indices, id: \.self ) { index in
-                        Text("\(tabOptions[index])")
-                            .fontWeight(tabOptions[index] == tabOptions[tabSelection] ? .bold : .regular)
-                            .border(Color.black, width: tabOptions[index] == tabOptions[tabSelection] ? 1 : 0)
-            
-                }
-                Spacer()
-            }
-            
-            Divider()
-            TabView(selection: $tabSelection) {
+                        VStack{
+                            Text("\(tabOptions[index])")
+                                .font(.system(size: 14, weight: tabOptions[index] == tabOptions[tabSelection] ? .bold : .regular))
+                                .frame(maxWidth: index == 1 ? UIScreen.main.bounds.width * 0.5 : UIScreen.main.bounds.width * 0.25)
+                            Rectangle()
+                                .padding(0)
+                                .frame(height: 2)
+                                .foregroundColor(tabOptions[index] == tabOptions[tabSelection] ? .black : .clear)
+                        }
+                        Spacer()
 
+                    }
+                }.frame(width: UIScreen.main.bounds.width)
+
+//            Rectangle()
+//                .frame(width: UIScreen.main.bounds.width, height: 2)
+                
+                
+            TabView(selection: $tabSelection) {
                 AddDescriptionView(recipeViewModel: recipeViewModel)
                     .tabItem(){
                         Text("DESC")

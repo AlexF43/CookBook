@@ -30,13 +30,6 @@ struct HomeContentView: View {
                     label: {Text("Add Recipe")
                     }
                 )
-                
-                Button("remove recipes"){
-                    for recipe in recipes {
-                        modelContext.delete(recipe)
-                    }
-                }
-                
             }
 
         }.onAppear() {
