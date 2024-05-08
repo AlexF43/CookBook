@@ -31,11 +31,11 @@ struct HomeContentView: View {
                     }
                 )
                 
-                Button("remove recipes"){
-                    for recipe in recipes {
-                        modelContext.delete(recipe)
-                    }
-                }
+//                Button("remove recipes"){
+//                    for recipe in recipes {
+//                        modelContext.delete(recipe)
+//                    }
+//                }
                 
             }
         }
