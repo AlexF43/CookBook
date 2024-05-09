@@ -17,7 +17,7 @@ struct CookBookView: View {
             List {
                 ForEach(recipes) { recipe in
                 NavigationLink {
-                    RecipeDetailView()
+                    RecipeDetailView(recipe: recipe)
                 } label: {
                     RecipeRowView(recipe: recipe)
                 }

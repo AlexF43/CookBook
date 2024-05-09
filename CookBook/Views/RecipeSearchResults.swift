@@ -14,7 +14,7 @@ struct RecipeSearchResults: View {
         List {
             ForEach(searchedRecipes) { recipe in
                 NavigationLink {
-                    RecipeDetailView()
+                    RecipeDetailView(recipe: recipe)
                 } label: {
                     RecipeRowView(recipe: recipe)
                 }
