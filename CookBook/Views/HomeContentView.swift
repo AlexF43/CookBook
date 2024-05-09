@@ -32,10 +32,7 @@ struct HomeContentView: View {
                 )
             }
 
-        }.onAppear() {
-            print("hello")
         }
-                
     }
 }
 
