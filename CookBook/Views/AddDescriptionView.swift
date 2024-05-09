@@ -56,15 +56,6 @@ struct AddDescriptionView: View {
                         .frame(width: 100, height: 100)
                         .foregroundColor(Color.red)
                 }
-            
-                
-//            {
-//                ZStack{
-//                    Rectangle()
-//                        .frame(width: 100, height: 100)
-//                    Text("Image picker")
-//                }
-//            }
             Spacer()
         }
         .onChange(of: recipeImageItem) {
