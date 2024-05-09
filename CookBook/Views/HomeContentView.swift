@@ -12,6 +12,7 @@ struct HomeContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var recipes: [Recipe]
     @ObservedObject var homeViewModel: HomeViewModel
+    @State private var trivia: String = ""
     var body: some View {
         //    @State var recipesFromSearch: [Recipe]
         
@@ -30,10 +31,15 @@ struct HomeContentView: View {
                     label: {Text("Add Recipe")
                     }
                 )
+                
+                Text(trivia)
             }
 
         }.onAppear() {
             print("hello")
+            getRandomFoodTrivia() { randomTrivia in
+                trivia = randomTrivia
+            }
         }
                 
     }
