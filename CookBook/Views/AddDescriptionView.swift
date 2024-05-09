@@ -18,23 +18,54 @@ struct AddDescriptionView: View {
     @ObservedObject var recipeViewModel: RecipeViewModel
     
     var body: some View {
-        VStack{
-            PhotosPicker("Upload a picture", selection: $recipeImageItem, matching: .images)
-                recipeImage?
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100, height: 100)
+        VStack(alignment: .leading){
+            Spacer()
+            Text("Recipe Title")
+                .multilineTextAlignment(.leading)
             
             TextField("Title", text: $recipeViewModel.title)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .controlSize(.large)
             
-            TextField("Description", text: $recipeViewModel.description)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            Spacer()
             
+            Text("Cooking Time (minutes)")
+                .multilineTextAlignment(.leading)
+                    
             TextField("Cooking Time", text: $recipeViewModel.cookingTime)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
+            Spacer()
+            
+            Text("Add Description")
+                .multilineTextAlignment(.leading)
+            
+            TextField("Description", text: $recipeViewModel.description, axis: .vertical)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            Spacer()
+            ZStack{
+                recipeImage?
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
+            }
+                PhotosPicker("pick an image", selection: $recipeImageItem, matching: .images)
+                    .overlay {
+                    Rectangle()
+                        .frame(width: 100, height: 100)
+                        .foregroundColor(Color.red)
+                }
+            
+                
+//            {
+//                ZStack{
+//                    Rectangle()
+//                        .frame(width: 100, height: 100)
+//                    Text("Image picker")
+//                }
+//            }
+            Spacer()
         }
         .onChange(of: recipeImageItem) {
             Task {
