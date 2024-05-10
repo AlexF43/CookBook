@@ -24,18 +24,18 @@ final class Recipe: Decodable {
     var title: String
     var desc: String?
     var imgUrl: String?
-//    var userImportedImage: Image?
+    @Attribute(.externalStorage) var userImportedImage: Data?
     var cookingTime: Int?
     var ingredients: [Ingredient]?
     var steps: [String]?
     
-    init(id: Int?, title: String, description: String ,imgUrl: String?, cookingTime: Int, ingredients: [Ingredient], steps: [String]) {
+    init(id: Int?, title: String, description: String , userImportedImage: Data?, cookingTime: Int, ingredients: [Ingredient], steps: [String]) {
         self.id = UUID()
         self.apiId = id
         self.title = title
         self.desc = description
         self.imgUrl = imgUrl
-//        self.userImportedImage = userImportedImage
+        self.userImportedImage = userImportedImage
         self.cookingTime = cookingTime;
         self.ingredients = ingredients
         self.steps = steps

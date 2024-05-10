@@ -14,7 +14,7 @@ struct AddDescriptionView: View {
     @State private var cookingTime: String = ""
     @State private var recipeImageItem: PhotosPickerItem?
     @State private var recipeImage: Image?
-    @State private var imageData: Data?
+//    @State private var imageData: Data?
     @ObservedObject var recipeViewModel: RecipeViewModel
     
     var body: some View {
@@ -45,26 +45,23 @@ struct AddDescriptionView: View {
             
             Spacer()
             ZStack{
-                recipeImage?
+                
+            }
+            PhotosPicker("pick an image", selection: $recipeImageItem, matching: .images)
+            Spacer()
+            
+            if let recipeImageData = recipeViewModel.imageData,
+               let uiImage = UIImage(data: recipeImageData) {
+                Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 200, height: 200)
+                    .frame(width: 250, height: 250)
             }
-                PhotosPicker("pick an image", selection: $recipeImageItem, matching: .images)
-                    .overlay {
-                    Rectangle()
-                        .frame(width: 100, height: 100)
-                        .foregroundColor(Color.red)
-                }
-            Spacer()
         }
         .onChange(of: recipeImageItem) {
             Task {
-                if let loaded = try? await recipeImageItem?.loadTransferable(type: Image.self) {
-//                    if let data =  {
-//                        Image(data)
-//                    }
-                    recipeImage = loaded
+                if let loaded = try? await recipeImageItem?.loadTransferable(type: Data.self) {
+                    recipeViewModel.imageData = loaded
                     
                 } else {
                     print("Failed")
