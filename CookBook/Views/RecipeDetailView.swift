@@ -67,6 +67,6 @@ struct RecipeDetailView: View {
 }
 
 
-#Preview {
-    RecipeDetailView(recipe: Recipe(id: 1, title: "Cheesy Pasta", description: "pasta with cheese", imgUrl: "https://www.thediaryofarealhousewife.com/wp-content/uploads/2019/10/Cheesy-Chicken-Pasta-dinner-recipe.jpg", cookingTime: 20, ingredients: [Ingredient(name: "Cheese", amount: 2, unit: "pieces", descName: "2 pieces of cheese")], steps: ["1. cook pasta", "2. place cheese"]))
-}
+//#Preview {
+//    RecipeDetailView(recipe: Recipe(id: 1, title: "Cheesy Pasta", description: "pasta with cheese", imgUrl: "https://www.thediaryofarealhousewife.com/wp-content/uploads/2019/10/Cheesy-Chicken-Pasta-dinner-recipe.jpg", cookingTime: 20, ingredients: [Ingredient(name: "Cheese", amount: 2, unit: "pieces", descName: "2 pieces of cheese")], steps: ["1. cook pasta", "2. place cheese"]))
+//}
