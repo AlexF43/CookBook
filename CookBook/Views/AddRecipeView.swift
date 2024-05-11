@@ -60,7 +60,7 @@ struct AddRecipeView: View {
                     }.tag(2)
                 }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
-            
+//            
 
             Spacer()
             

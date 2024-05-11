@@ -8,21 +8,31 @@
 import SwiftUI
 
 struct MainView: View {
+    @State private var tabSelection = 1
     var body: some View {
         TabView {
+            AddRecipeView()
+                .tabItem{
+                    Label("Add", systemImage: "plus.circle")
+                }
+                .tag(0)
+            
             HomeView()
                 .tabItem{
                     Label("Recipes", systemImage: "newspaper.fill")
                 }
-                .tag(0)
+                .tag(1)
+            
+          
             
             CookBookView()
                 .tabItem {
                     Label("Cookbook", systemImage: "book")
                 }
-                .tag(1)
+                .tag(2)
             
-        }    }
+        }
+    }
 }
 
 #Preview {
