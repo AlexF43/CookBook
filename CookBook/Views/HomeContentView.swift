@@ -37,7 +37,7 @@ struct HomeContentView: View {
 
         }.onAppear() {
             print("hello")
-            getRandomFoodTrivia() { randomTrivia in
+            RecipeSearchService().getRandomFoodTrivia() { randomTrivia in
                 trivia = randomTrivia
             }
         }

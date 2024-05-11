@@ -22,7 +22,7 @@ struct RecipeSearchResults: View {
         }
         .onReceive(homeViewModel.$searchText.debounce(for: .seconds(0.5), scheduler: DispatchQueue.main), perform: { _ in
             if(homeViewModel.searchText != "") {
-                getRecipes(searchTerm: homeViewModel.searchText) { recipes in
+                RecipeSearchService().getRecipes(searchTerm: homeViewModel.searchText) { recipes in
                     searchedRecipes = recipes
                 }
             }
