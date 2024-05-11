@@ -20,7 +20,8 @@ struct AddRecipeView: View {
     @State private var saved: Bool = false
 
     var body: some View {
-        VStack {
+        NavigationStack {
+            VStack {
                 HStack(spacing: 0){
                     Spacer()
                     ForEach (tabOptions.indices, id: \.self ) { index in
@@ -37,43 +38,44 @@ struct AddRecipeView: View {
                                 .foregroundColor(tabOptions[index] == tabOptions[tabSelection] ? .black : .clear)
                         }
                         Spacer()
-
+                        
                     }
                 }.frame(width: UIScreen.main.bounds.width)
-
-//            Rectangle()
-//                .frame(width: UIScreen.main.bounds.width, height: 2)
+                
+                //            Rectangle()
+                //                .frame(width: UIScreen.main.bounds.width, height: 2)
                 
                 
-            TabView(selection: $tabSelection) {
-                AddDescriptionView(recipeViewModel: recipeViewModel)
-                    .tabItem(){
-                        Text("DESC")
-                    }.tag(0)
-                AddIngredientView(recipeViewModel: recipeViewModel)
-                    .tabItem(){
-                        Text("INGREDIENTS")
-                    }.tag(1)
-                AddStepsView(recipeViewModel: recipeViewModel)
-                    .tabItem(){
-                        Text("STEPS")
-                    }.tag(2)
+                TabView(selection: $tabSelection) {
+                    AddDescriptionView(recipeViewModel: recipeViewModel)
+                        .tabItem(){
+                            Text("DESC")
+                        }.tag(0)
+                    AddIngredientView(recipeViewModel: recipeViewModel)
+                        .tabItem(){
+                            Text("INGREDIENTS")
+                        }.tag(1)
+                    AddStepsView(recipeViewModel: recipeViewModel)
+                        .tabItem(){
+                            Text("STEPS")
+                        }.tag(2)
                 }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-                .indexViewStyle(.page(backgroundDisplayMode: .always))
-//            
-
-            Spacer()
-            
+                    .indexViewStyle(.page(backgroundDisplayMode: .always))
+                //            
+                
+                Spacer()
+                
                 Button("Save") {
                     let newRecipe = recipeViewModel.createRecipe()
                     modelContext.insert(newRecipe)
                     saved = true
                 }.buttonStyle(.borderedProminent)
-                .disabled(recipeViewModel.title.isEmpty || recipeViewModel.description.isEmpty || recipeViewModel.ingredients.isEmpty || recipeViewModel.steps.isEmpty)
-        
-        }.navigationTitle("New Recipe")
-            .padding(20)
-        NavigationLink(destination: CookBookView(), isActive: $saved) { EmptyView() }
+                    .disabled(recipeViewModel.title.isEmpty || recipeViewModel.description.isEmpty || recipeViewModel.ingredients.isEmpty || recipeViewModel.steps.isEmpty)
+                NavigationLink(destination: CookBookView(), isActive: $saved) { EmptyView() }
+                
+            }.navigationTitle("New Recipe")
+            //            .padding(20)
+        }
     }
     
     //to insert a new recipe into the database:

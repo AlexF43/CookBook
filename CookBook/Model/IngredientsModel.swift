@@ -18,8 +18,7 @@ struct IngredientsModel {
     }
     
     func getDescName(amount: Double, unit: String, name: String) -> String {
-    var newAmount = 0
-        var amountString: String = getAmount(amount: amount)
+        let amountString: String = getAmount(amount: amount)
         if amount > 1 {
             return ("\(amountString) \(unit)s of \(name)")
         } else {
