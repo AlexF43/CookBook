@@ -53,7 +53,7 @@ class RecipeSearchService {
                     do {
                         print(data)
                         let triviaResponse = try JSONDecoder().decode(TriviaResponse.self, from: data)
-                        print("Got Joke")
+                        print("Got trivia")
                         callback(triviaResponse.trivia)
                     } catch {
                         print("couldnt decode \(error)")
