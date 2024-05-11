@@ -13,25 +13,27 @@ struct CookBookView: View {
     @Query private var recipes: [Recipe]
     
     var body: some View {
-        VStack{
-            if (recipes.isEmpty){
-                Text("No saved Recipes")
-            } else {
-                List {
-                    ForEach(recipes) { recipe in
-                        NavigationLink {
-                            RecipeDetailView(recipe: recipe)
-                        } label: {
-                            RecipeRowView(recipe: recipe)
-                        }
-                    }.onDelete(perform: { indexSet in
-                        for index in indexSet {
-                            modelContext.delete(recipes[index])
-                        }
-                    })
-                }.listRowSpacing(10)
-            }
-        }.navigationTitle("CookBook")
+        NavigationStack {
+            VStack{
+                if (recipes.isEmpty){
+                    Text("No saved Recipes")
+                } else {
+                    List {
+                        ForEach(recipes) { recipe in
+                            NavigationLink {
+                                RecipeDetailView(recipe: recipe)
+                            } label: {
+                                RecipeRowView(recipe: recipe)
+                            }
+                        }.onDelete(perform: { indexSet in
+                            for index in indexSet {
+                                modelContext.delete(recipes[index])
+                            }
+                        })
+                    }.listRowSpacing(10)
+                }
+            }.navigationTitle("CookBook")
+        }
     }
 }
 

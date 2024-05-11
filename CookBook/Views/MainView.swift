@@ -19,11 +19,9 @@ struct MainView: View {
             
             HomeView()
                 .tabItem{
-                    Label("Recipes", systemImage: "newspaper.fill")
+                    Label("Home", systemImage: "house")
                 }
                 .tag(1)
-            
-          
             
             CookBookView()
                 .tabItem {
