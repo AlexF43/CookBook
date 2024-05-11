@@ -21,18 +21,18 @@ struct HomeContentView: View {
             
             
             VStack{
-                Text("Home")
-                NavigationLink(
-                    destination: CookBookView(),
-                    label: {Text("CookBook")
-                    }
-                    
-                )
-                NavigationLink(
-                    destination: AddRecipeView(),
-                    label: {Text("Add Recipe")
-                    }
-                )
+//                Text("Home")
+//                NavigationLink(
+//                    destination: CookBookView(),
+//                    label: {Text("CookBook")
+//                    }
+//                    
+//                )
+//                NavigationLink(
+//                    destination: AddRecipeView(),
+//                    label: {Text("Add Recipe")
+//                    }
+//                )
                 
                 Text(trivia)
             }.navigationTitle("Home")
