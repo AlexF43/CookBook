@@ -23,6 +23,8 @@
 		070A02B72BE60D6F0069B7CA /* RecipeSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A02B62BE60D6F0069B7CA /* RecipeSearchResults.swift */; };
 		070A02BE2BE65C700069B7CA /* IngredientsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A02BD2BE65C700069B7CA /* IngredientsModel.swift */; };
 		070A02C02BEC731E0069B7CA /* TriviaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A02BF2BEC731E0069B7CA /* TriviaModel.swift */; };
+		070A02C22BF0313D0069B7CA /* RecipeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A02C12BF0313D0069B7CA /* RecipeCellView.swift */; };
+		070A02C42BF039C90069B7CA /* RandomRecipeApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A02C32BF039C90069B7CA /* RandomRecipeApiResponse.swift */; };
 		993E3D492BE493AD00881B89 /* RecipeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993E3D482BE493AD00881B89 /* RecipeRowView.swift */; };
 		993E3D4B2BE5102F00881B89 /* AddIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993E3D4A2BE5102F00881B89 /* AddIngredientView.swift */; };
 		99903E362BEEFF480046ED25 /* FeelingLuckyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99903E352BEEFF480046ED25 /* FeelingLuckyView.swift */; };
@@ -50,6 +52,8 @@
 		070A02B62BE60D6F0069B7CA /* RecipeSearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchResults.swift; sourceTree = "<group>"; };
 		070A02BD2BE65C700069B7CA /* IngredientsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsModel.swift; sourceTree = "<group>"; };
 		070A02BF2BEC731E0069B7CA /* TriviaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaModel.swift; sourceTree = "<group>"; };
+		070A02C12BF0313D0069B7CA /* RecipeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCellView.swift; sourceTree = "<group>"; };
+		070A02C32BF039C90069B7CA /* RandomRecipeApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomRecipeApiResponse.swift; sourceTree = "<group>"; };
 		993E3D482BE493AD00881B89 /* RecipeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRowView.swift; sourceTree = "<group>"; };
 		993E3D4A2BE5102F00881B89 /* AddIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientView.swift; sourceTree = "<group>"; };
 		99903E352BEEFF480046ED25 /* FeelingLuckyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingLuckyView.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 				070A02A42BDF8B520069B7CA /* HomeView.swift */,
 				99903E372BEF03FC0046ED25 /* MainView.swift */,
 				070A02B62BE60D6F0069B7CA /* RecipeSearchResults.swift */,
+				070A02C12BF0313D0069B7CA /* RecipeCellView.swift */,
 				070A02B02BE608CF0069B7CA /* SearchView.swift */,
 				070A02B22BE60AA80069B7CA /* HomeContentView.swift */,
 				99903E352BEEFF480046ED25 /* FeelingLuckyView.swift */,
@@ -149,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				070A02A02BDF61360069B7CA /* RecipeModel.swift */,
+				070A02C32BF039C90069B7CA /* RandomRecipeApiResponse.swift */,
 				070A02A22BDF64830069B7CA /* IngredientModel.swift */,
 				070A02BF2BEC731E0069B7CA /* TriviaModel.swift */,
 				070A02BD2BE65C700069B7CA /* IngredientsModel.swift */,
@@ -232,6 +238,7 @@
 				993E3D492BE493AD00881B89 /* RecipeRowView.swift in Sources */,
 				070A02B72BE60D6F0069B7CA /* RecipeSearchResults.swift in Sources */,
 				993E3D4B2BE5102F00881B89 /* AddIngredientView.swift in Sources */,
+				070A02C22BF0313D0069B7CA /* RecipeCellView.swift in Sources */,
 				070A02B32BE60AA80069B7CA /* HomeContentView.swift in Sources */,
 				070A02AD2BE096A50069B7CA /* RecipeDetailView.swift in Sources */,
 				070A02A12BDF61360069B7CA /* RecipeModel.swift in Sources */,
@@ -242,6 +249,7 @@
 				070A02912BDF5D310069B7CA /* CookBookApp.swift in Sources */,
 				070A02BE2BE65C700069B7CA /* IngredientsModel.swift in Sources */,
 				070A02B52BE60CA20069B7CA /* HomeViewModel.swift in Sources */,
+				070A02C42BF039C90069B7CA /* RandomRecipeApiResponse.swift in Sources */,
 				070A02AF2BE5C5F60069B7CA /* RecipeSearchService.swift in Sources */,
 				070A02A32BDF64830069B7CA /* IngredientModel.swift in Sources */,
 				070A02A92BE096570069B7CA /* CookBookView.swift in Sources */,

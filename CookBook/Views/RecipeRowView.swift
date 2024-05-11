@@ -11,11 +11,6 @@ struct RecipeRowView: View {
     var recipe: Recipe;
     var body: some View {
         HStack{
-//            AsyncImage(url: URL(string: recipe.imgUrl ?? "ay")) { image in
-//                image.image?.resizable()
-//                    .frame(width: 100, height: 100)
-//                    .padding(0)
-//            }
             if let recipeImage = recipe.userImportedImage,
                let uiImage = UIImage(data: recipeImage) {
                     Image(uiImage: uiImage)

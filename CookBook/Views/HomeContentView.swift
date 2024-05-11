@@ -14,6 +14,7 @@ struct HomeContentView: View {
     @ObservedObject var homeViewModel: HomeViewModel
     @State private var trivia: String = ""
     @State private var tabSelection = 0
+    @State private var randomRecipes: [Recipe] = []
     var body: some View {
         //    @State var recipesFromSearch: [Recipe]
         
@@ -45,22 +46,23 @@ struct HomeContentView: View {
                         }
                     }
                     
-                    Text("Suggested for you")
+                    Text("Try something new")
                         .bold()
                         .padding([.top], 20)
 
                     
                     ScrollView(.horizontal, showsIndicators: false) { //These ones will be random
                         HStack{
-                            ForEach(1..<13) { pick in
-                                ZStack{
-                                    Rectangle()
-                                        .frame(width: 100, height: 100)
-                                        .foregroundColor(.gray)
-                                    
-                                    Text("\(pick)")
-                                    
-                                }
+                            ForEach(randomRecipes) { recipe in
+//                                ZStack{
+//                                    Rectangle()
+//                                        .frame(width: 100, height: 100)
+//                                        .foregroundColor(.gray)
+//                                    
+//                                    Text("\(pick)")
+//                                    
+//                                }
+                                RecipeCellView(recipe: recipe)
                             }
                         }
                     }
@@ -106,10 +108,13 @@ struct HomeContentView: View {
                 
             }.onAppear() {
                 print("hello")
-                RecipeSearchService().getRandomFoodTrivia() { randomTrivia in
-                    trivia = randomTrivia
-                }
-                
+//                RecipeSearchService().getRandomFoodTrivia() { randomTrivia in
+//                    trivia = randomTrivia
+//                }
+//                
+//                RecipeSearchService().getRandomRecipes() { recipes in
+//                    randomRecipes = recipes
+//                }
         }
     }
 }
