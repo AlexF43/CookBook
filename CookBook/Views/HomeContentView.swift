@@ -13,6 +13,7 @@ struct HomeContentView: View {
     @Query private var recipes: [Recipe]
     @ObservedObject var homeViewModel: HomeViewModel
     @State private var trivia: String = ""
+    @State private var tabSelection = 0
     var body: some View {
         //    @State var recipesFromSearch: [Recipe]
         
@@ -25,6 +26,7 @@ struct HomeContentView: View {
                     destination: CookBookView(),
                     label: {Text("CookBook")
                     }
+                    
                 )
                 NavigationLink(
                     destination: AddRecipeView(),
@@ -33,7 +35,12 @@ struct HomeContentView: View {
                 )
                 
                 Text(trivia)
-            }
+            }.navigationTitle("Home")
+//                .toolbar {
+//                    ToolbarItemGroup(placement: .bottomBar) {
+//                        
+//                    }
+//                }
 
         }.onAppear() {
             print("hello")
@@ -41,6 +48,7 @@ struct HomeContentView: View {
                 trivia = randomTrivia
             }
         }
+        
     }
 }
 
