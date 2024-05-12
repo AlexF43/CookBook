@@ -83,7 +83,7 @@ class RecipeSearchService {
                         print(data)
                         let recipeResponse = try JSONDecoder().decode(recipeDetailApiResponse.self, from: data)
                         print(recipeResponse.image)
-                        let recipe = Recipe(id: recipeResponse.id, title: recipeResponse.title, imageUrl: recipeResponse.image, cookingTime: recipeResponse.readyInMinutes, ingredients: recipeResponse.extendedIngredients, steps: recipeResponse.analyzedInstructions[0].steps)
+                        let recipe = Recipe(id: recipeResponse.id, title: recipeResponse.title, imageUrl: recipeResponse.image, imageData: nil, cookingTime: recipeResponse.readyInMinutes, ingredients: recipeResponse.extendedIngredients, steps: recipeResponse.analyzedInstructions[0].steps, stepStrings: [])
                         callback(recipe)
                     } catch {
                         print("couldnt decode \(error)")

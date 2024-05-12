@@ -68,7 +68,7 @@ struct AddRecipeView: View {
                 Spacer()
                 
                 Button("Save") {
-                    let newRecipe = recipeViewModel.createRecipe(
+                    let newRecipe = recipeViewModel.createRecipe()
                     modelContext.insert(newRecipe)
                     saved = true
                 }.buttonStyle(.borderedProminent)
