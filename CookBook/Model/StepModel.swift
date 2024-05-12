@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct Step: Codable, Identifiable {
+struct Step: Codable, Identifiable, Hashable {
+    static func == (lhs: Step, rhs: Step) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     
     var id: UUID = UUID()
     var number: Int

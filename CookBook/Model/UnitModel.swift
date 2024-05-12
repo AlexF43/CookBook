@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UnitModel: Codable {
+struct UnitModel: Codable, Hashable {
     var amount: Double
     var unit: String
     

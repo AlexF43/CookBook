@@ -68,6 +68,7 @@ struct AddRecipeView: View {
                 Spacer()
                 
                 Button("Save") {
+                    recipeViewModel.updateStepNumbers()
                     let newRecipe = recipeViewModel.createRecipe()
                     modelContext.insert(newRecipe)
                     saved = true

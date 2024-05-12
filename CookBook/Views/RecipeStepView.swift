@@ -22,6 +22,7 @@ struct RecipeStepView: View {
                 Text("\(step.name)")
                 Spacer()
                 if let ingredients = step.ingredients {
+
                        Text(ingredients.isEmpty ? "" : "Ingredients")
                            .bold()
 

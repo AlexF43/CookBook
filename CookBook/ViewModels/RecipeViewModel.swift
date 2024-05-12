@@ -13,12 +13,18 @@ class RecipeViewModel: ObservableObject {
     @Published var description: String = ""
     @Published var cookingTime: String = ""
     @Published var ingredients: [Ingredient] = []
-    @Published var steps: [String] = []
+    @Published var steps: [Step] = []
     @Published var imageData: Data?
     
     func createRecipe() -> Recipe {
-        let newRecipe = Recipe(id: nil, title: title, description: description, imageData: imageData, cookingTime: Int(cookingTime) ?? 0, ingredients: ingredients, steps: nil, stepStrings: steps)
+        let newRecipe = Recipe(id: nil, title: title, description: description, imageData: imageData, cookingTime: Int(cookingTime) ?? 0, ingredients: ingredients, steps: steps)
         return newRecipe
+    }
+    
+    func updateStepNumbers(){
+        for i in 0..<steps.count {
+            steps[i].number = i
+        }
     }
 
 }
