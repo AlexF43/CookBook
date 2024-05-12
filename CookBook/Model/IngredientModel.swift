@@ -9,7 +9,11 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-struct Ingredient: Codable, Identifiable {
+struct Ingredient: Codable, Identifiable, Hashable {
+    static func == (lhs: Ingredient, rhs: Ingredient) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     
     var id: UUID
     var name: String

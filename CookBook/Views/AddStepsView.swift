@@ -10,14 +10,15 @@ import SwiftUI
 struct AddStepsView: View {
     @ObservedObject var recipeViewModel: RecipeViewModel
     @State private var step: String = ""
-    @State private var steps = [String]()
+    @State private var number: Int = 0
+//    @State private var steps = [String]()
     var body: some View {
         VStack{
             HStack {
                 TextField("Step", text: $step)
                     .textFieldStyle(.roundedBorder)
                 Button {
-                    recipeViewModel.steps.append(step)
+                    recipeViewModel.steps.append(Step(number: 0, name: step))
                     step = ""
                 } label: {
                     Text("Add")

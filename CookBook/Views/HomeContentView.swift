@@ -71,9 +71,9 @@ struct HomeContentView: View {
                         HStack{
                             ForEach(1..<10) { pick in
                                 NavigationLink {
-                                    RecipeDetailView(recipe: Recipe(id: 0, title: "new recipe", description: "test", imageUrl: "https://sallysbakingaddiction.com/wp-content/uploads/2019/11/homemade-sandwich-bread.jpg", imageData: nil, cookingTime: 20, ingredients: [], steps: [], stepStrings: nil))
+                                    RecipeDetailView(recipe: Recipe(id: 0, title: "new recipe", description: "test", imageUrl: "https://sallysbakingaddiction.com/wp-content/uploads/2019/11/homemade-sandwich-bread.jpg", imageData: nil, cookingTime: 20, ingredients: [], steps: []))
                                 } label: {
-                                    RecipeCellView(recipe: Recipe(id: 0, title: "new recipe", description: "test", imageUrl: "https://sallysbakingaddiction.com/wp-content/uploads/2019/11/homemade-sandwich-bread.jpg", imageData: nil, cookingTime: 20, ingredients: [], steps: [], stepStrings: nil))
+                                    RecipeCellView(recipe: Recipe(id: 0, title: "new recipe", description: "test", imageUrl: "https://sallysbakingaddiction.com/wp-content/uploads/2019/11/homemade-sandwich-bread.jpg", imageData: nil, cookingTime: 20, ingredients: [], steps: []))
                                         .frame(height: 200)
                                 }
                             }

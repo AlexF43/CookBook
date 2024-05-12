@@ -134,6 +134,6 @@ class RecipeSearchService {
         if(!recipeResponse.analyzedInstructions.isEmpty) {
             steps = recipeResponse.analyzedInstructions[0].steps
         }
-        return Recipe(id: recipeResponse.id, title: recipeResponse.title, imageUrl: recipeResponse.image, imageData: nil, cookingTime: recipeResponse.readyInMinutes, ingredients: recipeResponse.extendedIngredients, steps: steps, stepStrings: [])
+        return Recipe(id: recipeResponse.id, title: recipeResponse.title, imageUrl: recipeResponse.image, imageData: nil, cookingTime: recipeResponse.readyInMinutes, ingredients: recipeResponse.extendedIngredients, steps: steps)
     }
 }
