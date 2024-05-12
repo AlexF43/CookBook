@@ -10,12 +10,22 @@ import SwiftData
 import UIKit
 import SwiftUI
 
-final class RecipeApiResponse: Decodable {
+final class RecipeListApiResponse: Decodable {
     var results: [Recipe];
     var offset: Int;
     var number: Int;
     var totalResults: Int;
 }
+
+final class recipeDetailApiResponse: Codable {
+    var id : Int
+    var title: String
+    var image: String
+    var readyInMinutes: Int
+    var extendedIngredients: [Ingredient]
+    var analyzedInstructions: [StepApiResponse]
+}
+
 
 @Model
 final class Recipe: Decodable {
@@ -29,7 +39,7 @@ final class Recipe: Decodable {
     var ingredients: [Ingredient]?
     var steps: [Step]?
     
-    init(id: Int?, title: String, description: String , userImportedImage: Data?, cookingTime: Int, ingredients: [Ingredient], steps: [Step]) {
+    init(id: Int?, title: String, description: String? = nil, userImportedImage: Data? = nil, cookingTime: Int, ingredients: [Ingredient], steps: [Step]) {
         self.id = UUID()
         self.apiId = id
         self.title = title

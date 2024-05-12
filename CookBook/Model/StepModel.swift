@@ -37,3 +37,8 @@ struct Step: Codable {
         case number, step, ingredients
     }
 }
+
+final class StepApiResponse: Codable {
+    var name: String
+    var steps: [Step]
+}
