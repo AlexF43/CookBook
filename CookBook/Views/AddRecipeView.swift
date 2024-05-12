@@ -14,7 +14,7 @@ struct AddRecipeView: View {
     @State private var description: String = ""
     @State private var ingredients: [Ingredient] = [Ingredient]()
     @State private var steps: [String] = []
-    @State private var recipeViewModel = RecipeViewModel()
+    @StateObject private var recipeViewModel = RecipeViewModel()
     @State private var tabSelection: Int = 0
     let tabOptions: [String] = ["DESC", "INGREDIENTS", "STEPS"]
     @State private var saved: Bool = false
