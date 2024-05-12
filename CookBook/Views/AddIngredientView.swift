@@ -27,16 +27,16 @@ struct AddIngredientView: View {
                     }
                 }
                 .pickerStyle(.menu)
-                Button("Add Ingredient"){
-                    print(ingredient)
-                    let descName = ingredientsModel.getDescName(amount: Double(amount) ?? 0, unit: unit, name: ingredient)
-                    let newIngredient = Ingredient(name: ingredient, amount: Double(amount) ?? 0, unit: unit, descName: descName)
-                    recipeViewModel.ingredients.append(newIngredient)
-                }
+//                Button("Add Ingredient"){
+//                    print(ingredient)
+//                    let descName = ingredientsModel.getDescName(amount: Double(amount) ?? 0, unit: unit, name: ingredient)
+//                    let newIngredient = Ingredient(name: ingredient, amount: Double(amount) ?? 0, unit: unit, descName: descName)
+//                    recipeViewModel.ingredients.append(newIngredient)
+//                }
             }
             List(recipeViewModel.ingredients) { ingredient in
 //                ForEach(recipeViewModel.ingredients) { ingredient in
-                    Text(ingredient.descName)
+//                    Text(ingredient.descName)
 //                }
             }
     

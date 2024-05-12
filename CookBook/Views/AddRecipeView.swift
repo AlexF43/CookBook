@@ -65,12 +65,12 @@ struct AddRecipeView: View {
                 
                 Spacer()
                 
-                Button("Save") {
-                    let newRecipe = recipeViewModel.createRecipe()
-                    modelContext.insert(newRecipe)
-                    saved = true
-                }.buttonStyle(.borderedProminent)
-                    .disabled(recipeViewModel.title.isEmpty || recipeViewModel.description.isEmpty || recipeViewModel.ingredients.isEmpty || recipeViewModel.steps.isEmpty)
+//                Button("Save") {
+//                    let newRecipe = recipeViewModel.createRecipe()
+//                    modelContext.insert(newRecipe)
+//                    saved = true
+//                }.buttonStyle(.borderedProminent)
+//                    .disabled(recipeViewModel.title.isEmpty || recipeViewModel.description.isEmpty || recipeViewModel.ingredients.isEmpty || recipeViewModel.steps.isEmpty)
                 NavigationLink(destination: CookBookView(), isActive: $saved) { EmptyView() }
                 
             }.navigationTitle("New Recipe")
