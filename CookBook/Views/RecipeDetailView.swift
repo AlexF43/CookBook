@@ -49,6 +49,8 @@ struct RecipeDetailView: View {
             HStack {
                 VStack (alignment: .leading) {
                     Text("Ingredients")
+                        .foregroundColor(.rose)
+
                         .font(.system(size: 20, weight: .bold))
                     if let ingredients = recipe.ingredients {
                         ForEach(ingredients ) { ingredient in
@@ -59,32 +61,25 @@ struct RecipeDetailView: View {
                 }.padding(20)
                 Spacer()
             }
-//            VStack (alignment: .leading) {
-//                Text("Ingredients")
-//                    .font(.system(size: 20, weight: .bold))
-//                ScrollView(.horizontal, showsIndicators: false) {
-//                    HStack{
-//                        if let ingredients = recipe.ingredients {
-//                            ForEach(ingredients) { ingredient in
-//                                IngredientCellView(ingredient: ingredient)
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-            
-            
+            HStack{
+                Text("Steps")
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundColor(.rose)
+                    .padding([.leading], 20)
+                Spacer()
+            }
+
             ScrollView(.horizontal) {
                 LazyHStack {
                     if let steps = recipe.steps {
                         ForEach(steps) { step in
                             RecipeStepView(step: step)
-                                .frame(width: 300)
+                                .frame(width: 300, height: 300)
                         }
                     }
                 }
                 .scrollTargetLayout()
-            }
+            }.frame(height: 350)
             .scrollTargetBehavior(.viewAligned)
             .safeAreaPadding(.horizontal, 40)
             
@@ -105,7 +100,8 @@ struct RecipeDetailView: View {
 //            }
             Button("save recipe") {
                 modelContext.insert(recipe)
-            }
+            }.buttonStyle(.borderedProminent)
+                .padding(20)
             
         }
         .onAppear() {

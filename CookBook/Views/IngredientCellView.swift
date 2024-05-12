@@ -15,11 +15,11 @@ struct IngredientCellView: View {
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 60, height: 60)
+                    .frame(width: 50, height: 50)
                     .clipShape(Circle())
                 } placeholder: {
                     ProgressView()
-                        .frame(width: 60, height: 60)
+                        .frame(width: 50, height: 50)
                 }
             Text(ingredient.name)
             Spacer()

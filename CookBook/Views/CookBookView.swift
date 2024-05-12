@@ -30,7 +30,7 @@ struct CookBookView: View {
                                 modelContext.delete(recipes[index])
                             }
                         })
-                    }.listRowSpacing(10)
+                    }.listRowSpacing(0)
                 }
             }.navigationTitle("CookBook")
         }
