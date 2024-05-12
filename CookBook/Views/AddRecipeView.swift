@@ -42,20 +42,21 @@ struct AddRecipeView: View {
                     }
                 }.frame(width: UIScreen.main.bounds.width)
                 
-                //            Rectangle()
-                //                .frame(width: UIScreen.main.bounds.width, height: 2)
-                
-                
                 TabView(selection: $tabSelection) {
                     AddDescriptionView(recipeViewModel: recipeViewModel)
+                        .padding(10)
                         .tabItem(){
                             Text("DESC")
                         }.tag(0)
                     AddIngredientView(recipeViewModel: recipeViewModel)
+                        .padding(10)
+
                         .tabItem(){
                             Text("INGREDIENTS")
                         }.tag(1)
                     AddStepsView(recipeViewModel: recipeViewModel)
+                        .padding(10)
+
                         .tabItem(){
                             Text("STEPS")
                         }.tag(2)
@@ -74,7 +75,7 @@ struct AddRecipeView: View {
                 NavigationLink(destination: CookBookView(), isActive: $saved) { EmptyView() }
                 
             }.navigationTitle("New Recipe")
-            //            .padding(20)
+             .padding(10)
         }
     }
     

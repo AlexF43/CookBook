@@ -8,23 +8,36 @@
 import SwiftUI
 
 struct AddStepsView: View {
-    @State var recipeViewModel: RecipeViewModel
+    @ObservedObject var recipeViewModel: RecipeViewModel
     @State private var step: String = ""
+    @State private var steps = [String]()
     var body: some View {
         VStack{
             HStack {
                 TextField("Step", text: $step)
-                Button("Add Step"){
+                    .textFieldStyle(.roundedBorder)
+                Button {
                     recipeViewModel.steps.append(step)
-                    print(recipeViewModel.steps.count)
                     step = ""
-                }
-                
+                } label: {
+                    Text("Add")
+                        .bold()
+                }.buttonStyle(.borderedProminent)
             }
-            List(Array(recipeViewModel.steps.enumerated()), id: \.element) { index, step in
-                HStack {
-                    Text("\(index + 1).")
-                    Text(step)
+            List {
+                ForEach(Array(recipeViewModel.steps.enumerated()), id: \.element) { index, step in
+                    HStack{
+                        Text("\(index + 1). ")
+                        Text("\(recipeViewModel.steps[index])")
+                        Spacer()
+                        Button {
+                            recipeViewModel.steps.remove(at: index)
+                        } label: {
+                            Text("X")
+                                .foregroundColor(.gray)
+                                .bold()
+                        }
+                    }
                 }
             }
         }
