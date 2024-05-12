@@ -75,13 +75,9 @@ struct HomeContentView: View {
                         HStack{
                             ForEach(1..<13) { pick in
                                 ZStack{
-                                    Rectangle()
-                                        .frame(width: 100, height: 100)
-                                        .foregroundColor(.gray)
-                                    
-                                    Text("\(pick)")
-                                    
-                                }
+                                    RoundedRectangle(cornerSize: CGSize(width: 10, height: 10))
+                                    HomeRecipeView(recipe: Recipe(id: 0, title: "new recipe", description: "test", imageUrl: "https://sallysbakingaddiction.com/wp-content/uploads/2019/11/homemade-sandwich-bread.jpg", imageData: nil, cookingTime: 20, ingredients: [], steps: [], stepStrings: nil))
+                                                        }
                             }
                         }
                     }
