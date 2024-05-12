@@ -8,5 +8,5 @@
 import Foundation
 
 final class RandomRecipeApiResponse: Decodable {
-    var recipes: [Recipe];
+    var recipes: [recipeDetailApiResponse];
 }

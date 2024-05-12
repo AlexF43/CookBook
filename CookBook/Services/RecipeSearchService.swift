@@ -83,7 +83,7 @@ class RecipeSearchService {
                         print(data)
                         let recipeResponse = try JSONDecoder().decode(recipeDetailApiResponse.self, from: data)
                         print(recipeResponse.image)
-                        let recipe = Recipe(id: recipeResponse.id, title: recipeResponse.title, imageUrl: recipeResponse.image, imageData: nil, cookingTime: recipeResponse.readyInMinutes, ingredients: recipeResponse.extendedIngredients, steps: recipeResponse.analyzedInstructions[0].steps, stepStrings: [])
+                        let recipe = self.recipeApiResponseToRecipe(recipeResponse: recipeResponse)
                         callback(recipe)
                     } catch {
                         print("couldnt decode \(error)")
@@ -109,9 +109,13 @@ class RecipeSearchService {
                 if response.statusCode == 200 {
                     do {
                         print(data)
-                        let recipeResponse = try JSONDecoder().decode(RandomRecipeApiResponse.self, from: data)
+                        let recipseResponse = try JSONDecoder().decode(RandomRecipeApiResponse.self, from: data)
                         print("Got recipes")
-                        callback(recipeResponse.recipes)
+                        var recipes: [Recipe] = []
+                        for recipe in recipseResponse.recipes {
+                            recipes.append(self.recipeApiResponseToRecipe(recipeResponse: recipe))
+                        }
+                        callback(recipes)
                     } catch {
                         print("couldnt decode \(error)")
                     }
@@ -125,4 +129,7 @@ class RecipeSearchService {
     }
     
     
+    func recipeApiResponseToRecipe(recipeResponse: recipeDetailApiResponse) -> Recipe {
+        return Recipe(id: recipeResponse.id, title: recipeResponse.title, imageUrl: recipeResponse.image, imageData: nil, cookingTime: recipeResponse.readyInMinutes, ingredients: recipeResponse.extendedIngredients, steps: recipeResponse.analyzedInstructions[0].steps, stepStrings: [])
+    }
 }
