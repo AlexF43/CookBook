@@ -12,7 +12,7 @@ struct HomeContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Recipe.dateTimeAdded, order: .reverse) private var recipes: [Recipe]
     @ObservedObject var homeViewModel: HomeViewModel
-    @State private var trivia: String = ""
+    @State private var trivia: String?
     @State private var tabSelection = 0
     @State private var randomRecipes: [Recipe] = []
     var body: some View {
@@ -33,14 +33,12 @@ struct HomeContentView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) { //These ones will be random
                         HStack{
-                            ForEach(1..<13) { pick in
-                                ZStack{
-                                    Rectangle()
-                                        .frame(width: 100, height: 100)
-                                        .foregroundColor(.gray)
-                                    
-                                    Text("\(pick)")
-                                    
+                            ForEach(recipes) { recipe in
+                                NavigationLink {
+                                    RecipeDetailView(recipe: recipe)
+                                } label: {
+                                    RecipeCellView(recipe: recipe)
+                                        .frame(height: 200)
                                 }
                             }
                         }
@@ -54,15 +52,12 @@ struct HomeContentView: View {
                     ScrollView(.horizontal, showsIndicators: false) { //These ones will be random
                         HStack{
                             ForEach(randomRecipes) { recipe in
-//                                ZStack{
-//                                    Rectangle()
-//                                        .frame(width: 100, height: 100)
-//                                        .foregroundColor(.gray)
-//                                    
-//                                    Text("\(pick)")
-//                                    
-//                                }
-                                RecipeCellView(recipe: recipe)
+                                NavigationLink {
+                                    RecipeDetailView(recipe: recipe)
+                                } label: {
+                                    RecipeCellView(recipe: recipe)
+                                        .frame(height: 200)
+                                }
                             }
                         }
                     }
@@ -73,9 +68,13 @@ struct HomeContentView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) { // These will be set by us
                         HStack{
-                            ForEach(1..<13) { pick in
-                                RecipeCellView(recipe: Recipe(id: 0, title: "new recipe", description: "test", imageUrl: "https://sallysbakingaddiction.com/wp-content/uploads/2019/11/homemade-sandwich-bread.jpg", imageData: nil, cookingTime: 20, ingredients: [], steps: [], stepStrings: nil))
-                                    .frame(height: 200)
+                            ForEach(1..<10) { pick in
+                                NavigationLink {
+                                    RecipeDetailView(recipe: Recipe(id: 0, title: "new recipe", description: "test", imageUrl: "https://sallysbakingaddiction.com/wp-content/uploads/2019/11/homemade-sandwich-bread.jpg", imageData: nil, cookingTime: 20, ingredients: [], steps: [], stepStrings: nil))
+                                } label: {
+                                    RecipeCellView(recipe: Recipe(id: 0, title: "new recipe", description: "test", imageUrl: "https://sallysbakingaddiction.com/wp-content/uploads/2019/11/homemade-sandwich-bread.jpg", imageData: nil, cookingTime: 20, ingredients: [], steps: [], stepStrings: nil))
+                                        .frame(height: 200)
+                                }
                             }
                         }
                     }
@@ -92,7 +91,7 @@ struct HomeContentView: View {
                     .bold()
                     .padding([.top], 20)
                         
-                Text(trivia)
+                Text(trivia ?? "")
                     .italic()
                     .foregroundColor(.gray)
                         
@@ -100,19 +99,21 @@ struct HomeContentView: View {
                  .padding(10)
             }
                 
-            }.onAppear() {
+            .onAppear() {
                 print("hello")
-//                RecipeSearchService().getRandomFoodTrivia() { randomTrivia in
-//                    trivia = randomTrivia
-//                }
-//                
-//                RecipeSearchService().getRandomRecipes() { recipes in
-//                    randomRecipes = recipes
-//                }
+                if (trivia == nil) {
+                    RecipeSearchService().getRandomFoodTrivia() { randomTrivia in
+                        trivia = randomTrivia
+                    }
+                }
                 
-//                RecipeSearchService().getDetailedRecipe(recipeId: "654959") { recipe in
-//                    let recipe = recipe
-//                }
+                if (randomRecipes.isEmpty) {
+                    RecipeSearchService().getRandomRecipes() { recipes in
+                        randomRecipes = recipes
+                    }
+                }
+            }
+                
         }
     }
 }
