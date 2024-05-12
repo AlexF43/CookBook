@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     @State private var tabSelection = 1
     var body: some View {
-        TabView {
+        TabView(selection: $tabSelection) {
             AddRecipeView()
                 .tabItem{
                     Label("Add", systemImage: "plus.circle")
