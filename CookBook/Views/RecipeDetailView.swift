@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct RecipeDetailView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query private var savedRecipes: [Recipe]
     @State var recipe: Recipe
     var body: some View {
         ScrollView{
@@ -61,10 +63,15 @@ struct RecipeDetailView: View {
                 }.padding(20)
                 Spacer()
             }
+            Button("save recipe") {
+                modelContext.insert(recipe)
+            }
             
         }
         .onAppear() {
-            if(recipe.apiId != nil) {
+            if let currentRecipe = savedRecipes.first(where: {$0.apiId == recipe.apiId}) {
+                recipe = currentRecipe
+            } else {
                 RecipeSearchService().getDetailedRecipe(recipeId: "\(recipe.apiId!)") { detailedRecipe in
                     recipe = detailedRecipe
                 }
