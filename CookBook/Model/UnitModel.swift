@@ -11,6 +11,10 @@ struct UnitModel: Codable {
     var amount: Double
     var unit: String
     
+    init(amount: Double, unit: String){
+        self.amount = amount
+        self.unit = unit
+    }
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.amount = try container.decode(Double.self, forKey: .amount)
