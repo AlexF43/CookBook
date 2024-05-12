@@ -32,8 +32,11 @@ struct AddIngredientView: View {
 
                 Button {
                     print(ingredient)
+                    let unitModel = UnitModel(amount: Double(amount) ?? 0, unit: unit)
                     let descName = ingredientsModel.getDescName(amount: Double(amount) ?? 0, unit: unit, name: ingredient)
-                    let newIngredient = Ingredient(name: ingredient, amount: Double(amount) ?? 0, unit: unit, descName: descName)
+//                    let newIngredient = Ingredient(name: ingredient, amount: UnitModel(amount: amount, unit: unit), descName: descName)
+                    let newIngredient = Ingredient(name: ingredient, descName: descName, amount: unitModel)
+                                                   
                     recipeViewModel.ingredients.append(newIngredient)
                 } label: {
                     Text("Add")
