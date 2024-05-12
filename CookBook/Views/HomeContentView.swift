@@ -93,7 +93,7 @@ struct HomeContentView: View {
                     
                     Text("Circle or animated text, seen in things like casino machines")
                     
-                
+                 
                 Text("Fun trivia fact")
                     .bold()
                     .padding([.top], 20)
@@ -115,6 +115,10 @@ struct HomeContentView: View {
 //                RecipeSearchService().getRandomRecipes() { recipes in
 //                    randomRecipes = recipes
 //                }
+                
+                RecipeSearchService().getDetailedRecipe(recipeId: "654959") { recipe in
+                    let recipe = recipe
+                }
         }
     }
 }

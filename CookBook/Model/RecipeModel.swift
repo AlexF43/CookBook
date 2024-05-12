@@ -27,9 +27,9 @@ final class Recipe: Decodable {
     @Attribute(.externalStorage) var userImportedImage: Data?
     var cookingTime: Int?
     var ingredients: [Ingredient]?
-    var steps: [String]?
+    var steps: [Step]?
     
-    init(id: Int?, title: String, description: String , userImportedImage: Data?, cookingTime: Int, ingredients: [Ingredient], steps: [String]) {
+    init(id: Int?, title: String, description: String , userImportedImage: Data?, cookingTime: Int, ingredients: [Ingredient], steps: [Step]) {
         self.id = UUID()
         self.apiId = id
         self.title = title
@@ -47,10 +47,12 @@ final class Recipe: Decodable {
         self.apiId = try container.decode(Int.self, forKey: .id)
         self.title = try container.decode(String.self, forKey: .title)
         self.imgUrl = try container.decode(String.self, forKey: .image)
+        self.ingredients = try container.decode([Ingredient].self, forKey: .extendedIngredients)
+        self.steps = try container.decode([Step].self, forKey: .analyzedInstructions)
     }
     
     enum CodingKeys: CodingKey {
-        case id, title, image
+        case id, title, image, extendedIngredients, analyzedInstructions
       }
     
 }

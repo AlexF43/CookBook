@@ -29,6 +29,7 @@ struct AddIngredientView: View {
                     }
                 }
                 .pickerStyle(.menu)
+
                 Button {
                     print(ingredient)
                     let descName = ingredientsModel.getDescName(amount: Double(amount) ?? 0, unit: unit, name: ingredient)

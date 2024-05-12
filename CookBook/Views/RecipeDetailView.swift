@@ -39,7 +39,7 @@ struct RecipeDetailView: View {
                         .font(.system(size: 20, weight: .bold))
                     if let ingredients = recipe.ingredients {
                         ForEach(ingredients ) { ingredient in
-                            Text(ingredient.descName)
+                            Text(ingredient.descName ?? "")
                             
                         }
                     }

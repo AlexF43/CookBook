@@ -69,8 +69,8 @@ class RecipeSearchService {
     
     
     //todo
-    func getRecipeInstructions(callback:@escaping(_: Recipe) ->Void, recipeId: String) {
-        let url = URL(string: "https://api.spoonacular.com/recipes/analyzeInstructions")!
+    func getDetailedRecipe(recipeId: String, callback:@escaping(_: Recipe) ->Void) {
+        let url = URL(string: "https://api.spoonacular.com/recipes/\(recipeId)/information")!
         var request = URLRequest(url: url)
         request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
         
@@ -81,9 +81,9 @@ class RecipeSearchService {
                 if response.statusCode == 200 {
                     do {
                         print(data)
-                        let triviaResponse = try JSONDecoder().decode(TriviaResponse.self, from: data)
-                        print("Got trivia")
-//                        callback(triviaResponse.trivia)
+                        let recipeResponse = try JSONDecoder().decode(Recipe.self, from: data)
+                        print("Got recipe")
+                        callback(recipeResponse)
                     } catch {
                         print("couldnt decode \(error)")
                     }
