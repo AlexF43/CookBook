@@ -20,7 +20,6 @@ struct HomeRecipeView: View {
                     .frame(width: 100, height: 100)
                 }
                 Text("\(recipe.title)")
-                
             }.padding([.trailing], 10)
             .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
             .shadow(color: .black, radius: 3)

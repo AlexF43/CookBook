@@ -14,19 +14,30 @@ struct RecipeDetailView: View {
     @State var recipe: Recipe
     var body: some View {
         ScrollView{
-            AsyncImage(url: URL(string: recipe.imgUrl ?? "")) { image in
-                image.image?.resizable()
-                    .aspectRatio(1, contentMode: .fit)
-                    .padding(0)
+            if let imageData = recipe.userImportedImage {
+                let uiImage = UIImage(data: imageData)
+                 Image(uiImage: uiImage ?? UIImage())
+        
+            } else {
+                AsyncImage(url: URL(string: recipe.imgUrl ?? "")) { image in
+                    image.image?.resizable()
+                        .aspectRatio(1, contentMode: .fit)
+                        .padding(0)
+                }
             }
+           
             
             Text(recipe.title)
                 .font(.title)
                 .padding(10)
             
-            Text("\"\(recipe.desc ?? "No description")\"")
-                .foregroundColor(.gray)
-                .italic()
+            if let description = recipe.desc {
+                Text("\"\(description)\"")
+                    .foregroundColor(.gray)
+                    .italic()
+            }
+            
+           
             
             HStack{
                 Image(systemName: "clock")
