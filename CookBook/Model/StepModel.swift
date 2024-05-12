@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct Step: Codable {
+struct Step: Codable, Identifiable {
     
+    var id: UUID = UUID()
     var number: Int
     var name: String
     var ingredients: [Ingredient]

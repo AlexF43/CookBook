@@ -14,7 +14,7 @@ struct RecipeDetailView: View {
     @State var recipe: Recipe
     var body: some View {
         ScrollView{
-            AsyncImage(url: URL(string: recipe.imgUrl ?? "ay")) { image in
+            AsyncImage(url: URL(string: recipe.imgUrl ?? "")) { image in
                 image.image?.resizable()
                     .aspectRatio(1, contentMode: .fit)
                     .padding(0)
@@ -48,21 +48,50 @@ struct RecipeDetailView: View {
                 }.padding(20)
                 Spacer()
             }
-            HStack {
-                VStack (alignment: .leading) {
-                    Text("Method")
-                        .font(.system(size: 20, weight: .bold))
+//            VStack (alignment: .leading) {
+//                Text("Ingredients")
+//                    .font(.system(size: 20, weight: .bold))
+//                ScrollView(.horizontal, showsIndicators: false) {
+//                    HStack{
+//                        if let ingredients = recipe.ingredients {
+//                            ForEach(ingredients) { ingredient in
+//                                IngredientCellView(ingredient: ingredient)
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+            
+            
+            ScrollView(.horizontal) {
+                LazyHStack {
                     if let steps = recipe.steps {
-                        ForEach(steps.indices) { index in
-                            Text("\(index + 1). \(steps[index].name)")
+                        ForEach(steps) { step in
+                            RecipeStepView(step: step)
+                                .frame(width: 300, height: 100)
                         }
-                        
-                    } else {
-                        Text("no steps found")
                     }
-                }.padding(20)
-                Spacer()
+                }
+                .scrollTargetLayout()
             }
+            .scrollTargetBehavior(.viewAligned)
+            .safeAreaPadding(.horizontal, 40)
+            
+//            HStack {
+//                VStack (alignment: .leading) {
+//                    Text("Method")
+//                        .font(.system(size: 20, weight: .bold))
+//                    if let steps = recipe.steps {
+//                        ForEach(steps.indices) { index in
+//                            Text("\(index + 1). \(steps[index].name)")
+//                        }
+//                        
+//                    } else {
+//                        Text("no steps found")
+//                    }
+//                }.padding(20)
+//                Spacer()
+//            }
             Button("save recipe") {
                 modelContext.insert(recipe)
             }
