@@ -29,7 +29,7 @@ struct AddStepsView: View {
                 ForEach(Array(recipeViewModel.steps.enumerated()), id: \.element) { index, step in
                     HStack{
                         Text("\(index + 1). ")
-                        Text("\(recipeViewModel.steps[index])")
+                        Text("\(recipeViewModel.steps[index].name)")
                         Spacer()
                         Button {
                             recipeViewModel.steps.remove(at: index)
