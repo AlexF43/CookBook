@@ -128,7 +128,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
             endingLineNumber = "48"
-            landmarkName = "init(id:title:description:imageUrl:imageData:cookingTime:ingredients:steps:stepStrings:)"
+            landmarkName = "init(id:title:description:imageUrl:imageData:cookingTime:ingredients:steps:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

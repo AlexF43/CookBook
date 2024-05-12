@@ -130,6 +130,10 @@ class RecipeSearchService {
     
     
     func recipeApiResponseToRecipe(recipeResponse: recipeDetailApiResponse) -> Recipe {
-        return Recipe(id: recipeResponse.id, title: recipeResponse.title, imageUrl: recipeResponse.image, imageData: nil, cookingTime: recipeResponse.readyInMinutes, ingredients: recipeResponse.extendedIngredients, steps: recipeResponse.analyzedInstructions[0].steps, stepStrings: [])
+        var steps:[Step] = []
+        if(!recipeResponse.analyzedInstructions.isEmpty) {
+            steps = recipeResponse.analyzedInstructions[0].steps
+        }
+        return Recipe(id: recipeResponse.id, title: recipeResponse.title, imageUrl: recipeResponse.image, imageData: nil, cookingTime: recipeResponse.readyInMinutes, ingredients: recipeResponse.extendedIngredients, steps: steps, stepStrings: [])
     }
 }

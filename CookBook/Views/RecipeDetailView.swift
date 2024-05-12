@@ -14,16 +14,16 @@ struct RecipeDetailView: View {
     @State var recipe: Recipe
     var body: some View {
         ScrollView{
-            if let imageData = recipe.userImportedImage {
-                let uiImage = UIImage(data: imageData)
-                 Image(uiImage: uiImage ?? UIImage())
+//            if let imageData = recipe.userImportedImage {
+//                let uiImage = UIImage(data: imageData)
+//                 Image(uiImage: uiImage ?? UIImage())
         
-            } else {
+//            } else {
                 AsyncImage(url: URL(string: recipe.imgUrl ?? "")) { image in
                     image.image?.resizable()
                         .aspectRatio(1, contentMode: .fit)
                         .padding(0)
-                }
+//                }
             }
            
             
