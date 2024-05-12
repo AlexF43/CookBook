@@ -32,7 +32,7 @@ struct Ingredient: Codable, Identifiable, Hashable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = UUID()
         self.name = try container.decode(String.self, forKey: .name)
-        self.image = try container.decode(String.self, forKey: .image)
+        self.image = try container.decodeIfPresent(String.self, forKey: .image)
         self.descName = try container.decodeIfPresent(String.self, forKey: .originalName)
         self.amount = try container.decodeIfPresent(UnitModel.self, forKey: .metric)
     }
