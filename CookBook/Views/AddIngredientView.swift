@@ -39,7 +39,7 @@ struct AddIngredientView: View {
                         .bold()
                 }.buttonStyle(.borderedProminent)
                 
-            }
+            }.tint(.teal)
             List {
                 ForEach(recipeViewModel.ingredients.indices, id: \.self) { index in
                     HStack{
