@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct RecipeDetailView: View {
-    var recipe: Recipe
+    @State var recipe: Recipe
     var body: some View {
         ScrollView{
             AsyncImage(url: URL(string: recipe.imgUrl ?? "ay")) { image in
@@ -52,7 +52,7 @@ struct RecipeDetailView: View {
                         .font(.system(size: 20, weight: .bold))
                     if let steps = recipe.steps {
                         ForEach(steps.indices) { index in
-                            Text("\(index + 1). \(steps[index])")
+                            Text("\(index + 1). \(steps[index].name)")
                         }
                         
                     } else {
@@ -62,6 +62,13 @@ struct RecipeDetailView: View {
                 Spacer()
             }
             
+        }
+        .onAppear() {
+            if(recipe.apiId != nil) {
+                RecipeSearchService().getDetailedRecipe(recipeId: "\(recipe.apiId!)") { detailedRecipe in
+                    recipe = detailedRecipe
+                }
+            }
         }
     }
 }

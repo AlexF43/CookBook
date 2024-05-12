@@ -120,7 +120,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "1DF2FF0C-C9A0-4ACD-BD7B-4E6289FCCBF1"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CookBook/Model/RecipeModel.swift"
@@ -129,6 +129,22 @@
             startingLineNumber = "47"
             endingLineNumber = "47"
             landmarkName = "init(id:title:description:userImportedImage:cookingTime:ingredients:steps:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CA0BBC4F-D9DC-470B-84A4-BCF0F3752A7A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CookBook/Services/RecipeSearchService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "getDetailedRecipe(recipeId:callback:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
