@@ -14,63 +14,91 @@ struct AddDescriptionView: View {
     @State private var cookingTime: String = ""
     @State private var recipeImageItem: PhotosPickerItem?
     @State private var recipeImage: Image?
-//    @State private var imageData: Data?
+    //    @State private var imageData: Data?
     @ObservedObject var recipeViewModel: RecipeViewModel
     
     var body: some View {
-        VStack(alignment: .leading){
-            Spacer()
-            Text("Recipe Title")
-                .multilineTextAlignment(.leading)
-            
-            TextField("Title", text: $recipeViewModel.title)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .controlSize(.large)
-            
-            Spacer()
-            
-            Text("Cooking Time (minutes)")
-                .multilineTextAlignment(.leading)
-                    
-            TextField("Cooking Time", text: $recipeViewModel.cookingTime)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            
-            Spacer()
-            
-            Text("Add Description")
-                .multilineTextAlignment(.leading)
-            
-            TextField("Description", text: $recipeViewModel.description, axis: .vertical)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            
-            Spacer()
-            ZStack{
+        ScrollView {
+            VStack(alignment: .leading){
+                HStack{
+                    Spacer()
+                    PhotosPicker(selection: $recipeImageItem, matching: .images) {
+                        if let recipeImageData = recipeViewModel.imageData,
+                           let uiImage = UIImage(data: recipeImageData) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 250, height: 250, alignment: .center)
+                            
+                        } else {
+                            ZStack{
+                                Rectangle()
+                                    .frame(width: 200, height: 200, alignment: .center)
+                                    .foregroundColor(.lightGray)
+                                Image(systemName: "camera")
+                                    .tint(.teal)
+                                    .bold()
+                            }
+                        }
+                        
+                    }
+                    Spacer()
+                }.padding([.bottom], 20)
                 
-            }
-            PhotosPicker("pick an image", selection: $recipeImageItem, matching: .images)
-            Spacer()
+                Text("Add a Title")
+                    .multilineTextAlignment(.leading)
+                    .bold()
+                    .foregroundColor(.teal)
+                
+                TextField("Title", text: $recipeViewModel.title,  axis: .vertical)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .controlSize(.large)
+                    .padding([.bottom], 20)
+                
+              
+                
+                Text("Add Description")
+                    .multilineTextAlignment(.leading)
+                    .bold()
+                    .foregroundColor(.teal)
+                
+                TextField("Description", text: $recipeViewModel.description, axis: .vertical)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding([.bottom], 20)
+
+                
             
-            if let recipeImageData = recipeViewModel.imageData,
-               let uiImage = UIImage(data: recipeImageData) {
-                Image(uiImage: uiImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 250, height: 250)
-            }
-        }
-        .onChange(of: recipeImageItem) {
-            Task {
-                if let loaded = try? await recipeImageItem?.loadTransferable(type: Data.self) {
-                    recipeViewModel.imageData = loaded
+                Text("Cooking Time")
+                    .multilineTextAlignment(.leading)
+                    .bold()
+                    .foregroundColor(.teal)
+                
+                HStack {
+                    TextField("Cooking Time", text: $recipeViewModel.cookingTime)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(width: 100)
                     
-                } else {
-                    print("Failed")
+                    Text("MINS")
+                }.padding([.bottom], 20)
+
+            }
+            
+            
+            .onChange(of: recipeImageItem) {
+                Task {
+                    if let loaded = try? await recipeImageItem?.loadTransferable(type: Data.self) {
+                        recipeViewModel.imageData = loaded
+                        
+                    } else {
+                        print("Failed")
+                    }
                 }
             }
+            
         }
-        
     }
 }
+
 
 //#Preview {
 //    AddDescriptionView()

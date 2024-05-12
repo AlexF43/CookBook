@@ -20,6 +20,7 @@ struct MainView: View {
             HomeView()
                 .tabItem{
                     Label("Home", systemImage: "house")
+
                 }
                 .tag(1)
             
@@ -29,7 +30,7 @@ struct MainView: View {
                 }
                 .tag(2)
             
-        }
+        }.tint(.rose)
     }
 }
 

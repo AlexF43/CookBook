@@ -29,13 +29,14 @@ struct AddRecipeView: View {
                             Text("\(tabOptions[index])")
                                 .font(.system(size: 14, weight: tabOptions[index] == tabOptions[tabSelection] ? .bold : .regular))
                                 .frame(maxWidth: index == 1 ? UIScreen.main.bounds.width * 0.5 : UIScreen.main.bounds.width * 0.25)
+                                .foregroundColor(.rose)
                                 .onTapGesture {
                                     tabSelection = index
                                 }
                             Rectangle()
                                 .padding(0)
                                 .frame(height: 2)
-                                .foregroundColor(tabOptions[index] == tabOptions[tabSelection] ? .black : .clear)
+                                .foregroundColor(tabOptions[index] == tabOptions[tabSelection] ? .rose : .clear)
                         }
                         Spacer()
                         
@@ -62,7 +63,7 @@ struct AddRecipeView: View {
                         }.tag(2)
                 }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
                     .indexViewStyle(.page(backgroundDisplayMode: .always))
-                //            
+                //
                 
                 Spacer()
                 
