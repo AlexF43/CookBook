@@ -18,7 +18,16 @@ struct RecipeRowView: View {
                         .scaledToFit()
                         .frame(width: 100, height: 100)
             }
-            
+            if let recipeImage = recipe.imgUrl {
+                AsyncImage(url: URL(string: recipeImage)) { image in
+                   
+                    image.image?.resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100)
+                    
+                }
+                 
+            }
             VStack(alignment: .leading, content: {
                 
                 Text(recipe.title)
@@ -35,9 +44,9 @@ struct RecipeRowView: View {
                             .foregroundColor(.gray)
                     }
                 }
-            }).padding(5)
-            .multilineTextAlignment(.leading)
-        }.listRowInsets(.init())
+            })
+//            .multilineTextAlignment(.leading)
+        }.padding(0)
     }
 }
 
