@@ -74,10 +74,8 @@ struct HomeContentView: View {
                     ScrollView(.horizontal, showsIndicators: false) { // These will be set by us
                         HStack{
                             ForEach(1..<13) { pick in
-                                ZStack{
-                                    RoundedRectangle(cornerSize: CGSize(width: 10, height: 10))
-                                    HomeRecipeView(recipe: Recipe(id: 0, title: "new recipe", description: "test", imageUrl: "https://sallysbakingaddiction.com/wp-content/uploads/2019/11/homemade-sandwich-bread.jpg", imageData: nil, cookingTime: 20, ingredients: [], steps: [], stepStrings: nil))
-                                                        }
+                                RecipeCellView(recipe: Recipe(id: 0, title: "new recipe", description: "test", imageUrl: "https://sallysbakingaddiction.com/wp-content/uploads/2019/11/homemade-sandwich-bread.jpg", imageData: nil, cookingTime: 20, ingredients: [], steps: [], stepStrings: nil))
+                                    .frame(height: 200)
                             }
                         }
                     }
