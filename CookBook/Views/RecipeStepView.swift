@@ -22,19 +22,20 @@ struct RecipeStepView: View {
                 Text("\(step.name)")
                 Spacer()
                 if let ingredients = step.ingredients {
-                    Text(ingredients.isEmpty ? "" : "Ingredients")
-                        .bold()
 
-                }
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack{
-                        if let ingredients = step.ingredients {
-                            
-                            
-                            ForEach(ingredients) { ingredient in
-                                IngredientCellView(ingredient: ingredient)
-                            }
-                        }
+                       Text(ingredients.isEmpty ? "" : "Ingredients")
+                           .bold()
+
+                   }
+                   ScrollView(.horizontal, showsIndicators: false) {
+                       HStack{
+                           if let ingredients = step.ingredients {
+                               
+                               
+                               ForEach(ingredients) { ingredient in
+                                   IngredientCellView(ingredient: ingredient)
+                               }
+                           }
                     }.scrollTargetLayout()
                     
                 }  .scrollTargetBehavior(.viewAligned)
