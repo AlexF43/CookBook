@@ -57,8 +57,8 @@ final class Recipe: Decodable {
         self.apiId = try container.decode(Int.self, forKey: .id)
         self.title = try container.decode(String.self, forKey: .title)
         self.imgUrl = try container.decode(String.self, forKey: .image)
-        self.ingredients = try container.decode([Ingredient].self, forKey: .extendedIngredients)
-        self.steps = try container.decode([Step].self, forKey: .analyzedInstructions)
+        self.ingredients = try container.decodeIfPresent([Ingredient].self, forKey: .extendedIngredients)
+        self.steps = try container.decodeIfPresent([Step].self, forKey: .analyzedInstructions)
     }
     
     enum CodingKeys: CodingKey {

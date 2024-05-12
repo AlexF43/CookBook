@@ -116,9 +116,9 @@ struct HomeContentView: View {
 //                    randomRecipes = recipes
 //                }
                 
-                RecipeSearchService().getDetailedRecipe(recipeId: "654959") { recipe in
-                    let recipe = recipe
-                }
+//                RecipeSearchService().getDetailedRecipe(recipeId: "654959") { recipe in
+//                    let recipe = recipe
+//                }
         }
     }
 }

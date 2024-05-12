@@ -10,6 +10,8 @@ import SwiftUI
 struct RecipeSearchResults: View {
     @ObservedObject var homeViewModel: HomeViewModel
     @State var searchedRecipes: [Recipe]
+    @State var selectedRecipe: Recipe? = nil
+    @State var isLoading: Bool = false
     var body: some View {
         List {
             ForEach(searchedRecipes) { recipe in
@@ -21,7 +23,7 @@ struct RecipeSearchResults: View {
             }
         }
         .onReceive(homeViewModel.$searchText.debounce(for: .seconds(0.5), scheduler: DispatchQueue.main), perform: { _ in
-            if(homeViewModel.searchText != "") {
+            if homeViewModel.searchText != "" {
                 RecipeSearchService().getRecipes(searchTerm: homeViewModel.searchText) { recipes in
                     searchedRecipes = recipes
                 }
