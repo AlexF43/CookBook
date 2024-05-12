@@ -17,19 +17,31 @@ struct RecipeCellView: View {
 
  
             VStack(alignment: .leading, content: {
-                AsyncImage(url: URL(string: recipe.imgUrl ?? "")) { image in
-                    image.image?.resizable()
+                if let imageData = recipe.userImportedImage {
+                    let uiImage = UIImage(data: imageData)
+                     Image(uiImage: uiImage ?? UIImage())
+                        .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 100, height: 100)
                         .padding([.top], 10)
                         .cornerRadius(20)
+            
+                } else {
+                    AsyncImage(url: URL(string: recipe.imgUrl ?? "")) { image in
+                        image.image?.resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 100, height: 100)
+                            .padding([.top], 10)
+                            .cornerRadius(20)
+                    }
                 }
                 
                 Text(recipe.title)
+                    .multilineTextAlignment(.leading)
                 Spacer()
             })
 //
-        }.frame(width: 120, height: 160)
+        }.frame(width: 120, height: 170)
 
     
     }

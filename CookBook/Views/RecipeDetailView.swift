@@ -14,10 +14,15 @@ struct RecipeDetailView: View {
     @State var recipe: Recipe
     var body: some View {
         ScrollView{
-//            if let imageData = recipe.userImportedImage {
-//                let uiImage = UIImage(data: imageData)
-//                Image(uiImage: uiImage ?? UIImage())
-//            } else {
+            if let imageData = recipe.userImportedImage {
+                let uiImage = UIImage(data: imageData)
+                 Image(uiImage: uiImage ?? UIImage())
+                    .resizable()
+                    .aspectRatio(1, contentMode: .fit)
+                    .padding(0)
+                    .frame(height: 300)
+        
+            } else {
                 AsyncImage(url: URL(string: recipe.imgUrl ?? "")) { image in
                     image.image?.resizable()
                         .aspectRatio(1, contentMode: .fit)
@@ -56,6 +61,7 @@ struct RecipeDetailView: View {
                 }
                 HStack{
                     Text("Steps")
+
                         .font(.system(size: 20, weight: .bold))
                         .foregroundColor(.rose)
                         .padding([.leading], 20)
