@@ -105,7 +105,7 @@ struct RecipeDetailView: View {
             
         }
         .onAppear() {
-            if let currentRecipe = savedRecipes.first(where: {$0.apiId == recipe.apiId}) {
+            if let currentRecipe = savedRecipes.first(where: {$0.id == recipe.id}) {
                 recipe = currentRecipe
             } else {
                 RecipeSearchService().getDetailedRecipe(recipeId: "\(recipe.apiId!)") { detailedRecipe in
