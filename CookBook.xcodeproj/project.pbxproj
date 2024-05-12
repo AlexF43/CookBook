@@ -25,6 +25,8 @@
 		070A02C02BEC731E0069B7CA /* TriviaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A02BF2BEC731E0069B7CA /* TriviaModel.swift */; };
 		070A02C22BF0313D0069B7CA /* RecipeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A02C12BF0313D0069B7CA /* RecipeCellView.swift */; };
 		070A02C42BF039C90069B7CA /* RandomRecipeApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A02C32BF039C90069B7CA /* RandomRecipeApiResponse.swift */; };
+		070A02C62BF04CF00069B7CA /* StepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A02C52BF04CF00069B7CA /* StepModel.swift */; };
+		070A02C82BF0516C0069B7CA /* UnitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A02C72BF0516C0069B7CA /* UnitModel.swift */; };
 		993E3D492BE493AD00881B89 /* RecipeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993E3D482BE493AD00881B89 /* RecipeRowView.swift */; };
 		993E3D4B2BE5102F00881B89 /* AddIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993E3D4A2BE5102F00881B89 /* AddIngredientView.swift */; };
 		99903E362BEEFF480046ED25 /* FeelingLuckyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99903E352BEEFF480046ED25 /* FeelingLuckyView.swift */; };
@@ -54,6 +56,8 @@
 		070A02BF2BEC731E0069B7CA /* TriviaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaModel.swift; sourceTree = "<group>"; };
 		070A02C12BF0313D0069B7CA /* RecipeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCellView.swift; sourceTree = "<group>"; };
 		070A02C32BF039C90069B7CA /* RandomRecipeApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomRecipeApiResponse.swift; sourceTree = "<group>"; };
+		070A02C52BF04CF00069B7CA /* StepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepModel.swift; sourceTree = "<group>"; };
+		070A02C72BF0516C0069B7CA /* UnitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitModel.swift; sourceTree = "<group>"; };
 		993E3D482BE493AD00881B89 /* RecipeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRowView.swift; sourceTree = "<group>"; };
 		993E3D4A2BE5102F00881B89 /* AddIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientView.swift; sourceTree = "<group>"; };
 		99903E352BEEFF480046ED25 /* FeelingLuckyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingLuckyView.swift; sourceTree = "<group>"; };
@@ -156,6 +160,8 @@
 				070A02A02BDF61360069B7CA /* RecipeModel.swift */,
 				070A02C32BF039C90069B7CA /* RandomRecipeApiResponse.swift */,
 				070A02A22BDF64830069B7CA /* IngredientModel.swift */,
+				070A02C52BF04CF00069B7CA /* StepModel.swift */,
+				070A02C72BF0516C0069B7CA /* UnitModel.swift */,
 				070A02BF2BEC731E0069B7CA /* TriviaModel.swift */,
 				070A02BD2BE65C700069B7CA /* IngredientsModel.swift */,
 			);
@@ -232,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				070A02C82BF0516C0069B7CA /* UnitModel.swift in Sources */,
 				99EB410C2BE70150000CCE28 /* AddStepsView.swift in Sources */,
 				070A02A72BE0964A0069B7CA /* AddRecipeView.swift in Sources */,
 				99903E362BEEFF480046ED25 /* FeelingLuckyView.swift in Sources */,
@@ -239,6 +246,7 @@
 				070A02B72BE60D6F0069B7CA /* RecipeSearchResults.swift in Sources */,
 				993E3D4B2BE5102F00881B89 /* AddIngredientView.swift in Sources */,
 				070A02C22BF0313D0069B7CA /* RecipeCellView.swift in Sources */,
+				070A02C62BF04CF00069B7CA /* StepModel.swift in Sources */,
 				070A02B32BE60AA80069B7CA /* HomeContentView.swift in Sources */,
 				070A02AD2BE096A50069B7CA /* RecipeDetailView.swift in Sources */,
 				070A02A12BDF61360069B7CA /* RecipeModel.swift in Sources */,
