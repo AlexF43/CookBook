@@ -27,87 +27,60 @@ struct RecipeDetailView: View {
                     image.image?.resizable()
                         .aspectRatio(1, contentMode: .fit)
                         .padding(0)
-                        .frame(height: 300)
+//                }
+                Text(recipe.title)
+                    .font(.title)
+                    .padding(10)
+                
+                if let description = recipe.desc {
+                    Text("\"\(description)\"")
+                        .foregroundColor(.gray)
+                        .italic()
                 }
-            }
-           
-            
-            Text(recipe.title)
-                .font(.title)
-                .padding(10)
-            
-            if let description = recipe.desc {
-                Text("\"\(description)\"")
-                    .foregroundColor(.gray)
-                    .italic()
-            }
-            
-           
-            
-            HStack{
-                Image(systemName: "clock")
-                    .foregroundColor(.gray)
-                Text("\(recipe.cookingTime ?? 0) MINS")
-                    .foregroundColor(.gray)
-            }
-            
-            HStack {
-                VStack (alignment: .leading) {
-                    Text("Ingredients")
-                        .foregroundColor(.rose)
+                HStack{
+                    Image(systemName: "clock")
+                        .foregroundColor(.gray)
+                    Text("\(recipe.cookingTime ?? 0) MINS")
+                        .foregroundColor(.gray)
+                }
+                
+                HStack {
+                    VStack (alignment: .leading) {
+                        Text("Ingredients")
+                            .foregroundColor(.rose)
+                        
+                            .font(.system(size: 20, weight: .bold))
+                        if let ingredients = recipe.ingredients {
+                            ForEach(ingredients ) { ingredient in
+                                Text(ingredient.descName ?? "")
+                                
+                            }
+                        }
+                    }.padding(20)
+                    Spacer()
+                }
+                HStack{
+                    Text("Steps")
 
                         .font(.system(size: 20, weight: .bold))
-                    if let ingredients = recipe.ingredients {
-                        ForEach(ingredients ) { ingredient in
-                            Text(ingredient.descName ?? "")
-                            
-                        }
-                    }
-                }.padding(20)
-                Spacer()
-            }
-            HStack{
-                Text("Steps")
-                    .font(.system(size: 20, weight: .bold))
-                    .foregroundColor(.rose)
-                    .padding([.leading], 20)
-                Spacer()
-            }
-
-            ScrollView(.horizontal) {
-                LazyHStack {
-                    if let steps = recipe.steps {
-                        ForEach(steps) { step in
-                            RecipeStepView(step: step)
-                                .frame(width: 300, height: 300)
-                        }
-                    }
+                        .foregroundColor(.rose)
+                        .padding([.leading], 20)
+                    Spacer()
                 }
-                .scrollTargetLayout()
-            }.frame(height: 350)
-            .scrollTargetBehavior(.viewAligned)
-            .safeAreaPadding(.horizontal, 40)
-            
-//            HStack {
-//                VStack (alignment: .leading) {
-//                    Text("Method")
-//                        .font(.system(size: 20, weight: .bold))
-//                    if let steps = recipe.steps {
-//                        ForEach(steps.indices) { index in
-//                            Text("\(index + 1). \(steps[index].name)")
-//                        }
-//                        
-//                    } else {
-//                        Text("no steps found")
-//                    }
-//                }.padding(20)
-//                Spacer()
-//            }
-            Button("save recipe") {
-                modelContext.insert(recipe)
-            }.buttonStyle(.borderedProminent)
-                .padding(20)
-            
+                ScrollView(.horizontal) {
+                    LazyHStack {
+                        if let steps = recipe.steps {
+                            ForEach(steps) { step in
+                                RecipeStepView(step: step)
+                                    .frame(width: 300, height: 300)
+                            }
+                        }
+                    }
+                    .scrollTargetLayout()
+                }.frame(height: 350)
+                    .scrollTargetBehavior(.viewAligned)
+                    .safeAreaPadding(.horizontal, 40)
+            }
         }
         .onAppear() {
             if let currentRecipe = savedRecipes.first(where: {$0.id == recipe.id}) {

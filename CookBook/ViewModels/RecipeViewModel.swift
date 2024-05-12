@@ -23,7 +23,7 @@ class RecipeViewModel: ObservableObject {
     
     func updateStepNumbers(){
         for i in 0..<steps.count {
-            steps[i].number = i
+            steps[i].number = i + 1
         }
     }
 
