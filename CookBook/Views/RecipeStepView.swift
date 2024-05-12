@@ -10,13 +10,15 @@ import SwiftUI
 struct RecipeStepView: View {
     var step: Step
     var body: some View {
-        Text("Step \(step.number)")
-        Text("\(step.name)")
-        Text("Ingredients")
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack{
-                ForEach(step.ingredients) { ingredient in
-                    IngredientCellView(ingredient: ingredient)
+        VStack{
+            Text("Step \(step.number)")
+            Text("\(step.name)")
+            Text("Ingredients")
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack{
+                    ForEach(step.ingredients) { ingredient in
+                        IngredientCellView(ingredient: ingredient)
+                    }
                 }
             }
         }

@@ -68,7 +68,7 @@ struct RecipeDetailView: View {
                     if let steps = recipe.steps {
                         ForEach(steps) { step in
                             RecipeStepView(step: step)
-                                .frame(width: 300, height: 100)
+                                .frame(width: 300)
                         }
                     }
                 }
