@@ -10,7 +10,7 @@ import SwiftData
 
 struct HomeContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var recipes: [Recipe]
+    @Query(sort: \Recipe.dateTimeAdded, order: .reverse) private var recipes: [Recipe]
     @ObservedObject var homeViewModel: HomeViewModel
     @State private var trivia: String = ""
     @State private var tabSelection = 0
@@ -80,12 +80,12 @@ struct HomeContentView: View {
                         }
                     }
                     
-                    Text("Feeling Lucky?")
-                        .bold()
-                        .font(.system(size: 30))
-                        .padding([.top], 20)
-                    
-                    Text("Circle or animated text, seen in things like casino machines")
+//                    Text("Feeling Lucky?")
+//                        .bold()
+//                        .font(.system(size: 30))
+//                        .padding([.top], 20)
+//                    
+//                    Text("Circle or animated text, seen in things like casino machines")
                     
                  
                 Text("Fun trivia fact")
