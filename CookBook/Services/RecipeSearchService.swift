@@ -24,7 +24,7 @@ class RecipeSearchService {
                 if response.statusCode == 200 {
                     do {
                         print(data)
-                        let recipes = try JSONDecoder().decode(RecipeApiResponse.self, from: data)
+                        let recipes = try JSONDecoder().decode(RecipeListApiResponse.self, from: data)
                         print("We got \(recipes.number) results in this request")
                         callback(recipes.results)
                     } catch {
@@ -81,9 +81,10 @@ class RecipeSearchService {
                 if response.statusCode == 200 {
                     do {
                         print(data)
-                        let recipeResponse = try JSONDecoder().decode(Recipe.self, from: data)
+                        let recipeResponse = try JSONDecoder().decode(recipeDetailApiResponse.self, from: data)
                         print("Got recipe")
-                        callback(recipeResponse)
+                        let recipe = Recipe(id: recipeResponse.id, title: recipeResponse.title, cookingTime: recipeResponse.readyInMinutes, ingredients: recipeResponse.extendedIngredients, steps: recipeResponse.analyzedInstructions[0].steps)
+                        callback(recipe)
                     } catch {
                         print("couldnt decode \(error)")
                     }
