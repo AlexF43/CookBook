@@ -38,6 +38,7 @@ final class Recipe: Decodable {
     var cookingTime: Int?
     var ingredients: [Ingredient]?
     var steps: [Step]?
+    var dateTimeAdded: Date
     
     init(id: Int?, title: String, description: String? = nil, imageUrl: String, imageData: Data?, cookingTime: Int, ingredients: [Ingredient], steps: [Step]?, stepStrings: [String]?) {
         self.id = UUID()
@@ -49,6 +50,7 @@ final class Recipe: Decodable {
         self.cookingTime = cookingTime;
         self.ingredients = ingredients
         self.steps = steps
+        self.dateTimeAdded = .now
     }
     
     required init(from decoder: Decoder) throws {
@@ -59,6 +61,7 @@ final class Recipe: Decodable {
         self.imgUrl = try container.decode(String.self, forKey: .image)
         self.ingredients = try container.decodeIfPresent([Ingredient].self, forKey: .extendedIngredients)
         self.steps = try container.decodeIfPresent([Step].self, forKey: .analyzedInstructions)
+        self.dateTimeAdded = .now
     }
     
     enum CodingKeys: CodingKey {
