@@ -58,7 +58,7 @@ final class Recipe: Decodable {
         self.id = UUID()
         self.apiId = try container.decode(Int.self, forKey: .id)
         self.title = try container.decode(String.self, forKey: .title)
-        self.imgUrl = try container.decodeIfPresent(String.self, forKey: .image)
+        self.imgUrl = try container.decodeIfPresent(String.self, forKey: .image) ?? nil
         self.ingredients = try container.decodeIfPresent([Ingredient].self, forKey: .extendedIngredients)
         self.steps = try container.decodeIfPresent([Step].self, forKey: .analyzedInstructions)
         self.dateTimeAdded = .now
