@@ -108,12 +108,35 @@ struct RecipeDetailView: View {
             if let currentRecipe = savedRecipes.first(where: {$0.id == recipe.id}) {
                 recipe = currentRecipe
             } else {
-                RecipeSearchService().getDetailedRecipe(recipeId: "\(recipe.apiId!)") { detailedRecipe in
+                RecipeSearchService().getDetailedRecipe(recipeId: "\(recipe.id)") { detailedRecipe in
                     recipe = detailedRecipe
+                }
+            }
+        }.toolbar {
+            Button {
+                if let _ = savedRecipes.first(where: {$0.id == recipe.id}) {
+                    modelContext.delete(recipe)
+                } else {
+                    modelContext.insert(recipe)
+                }
+            } label : {
+                ZStack {
+                    Circle()
+                        .foregroundColor(.white)
+                        .frame(width: 50, height: 50)
+                    if let _ = savedRecipes.first(where: {$0.id == recipe.id}) {
+                        Image(systemName: "heart.fill")
+                            .foregroundColor(.rose)
+                                } else {
+                        Image(systemName: "heart")
+                            .foregroundColor(.rose)
+                     }
+                    
                 }
             }
         }
     }
+    
 }
 
 

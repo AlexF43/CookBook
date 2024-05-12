@@ -7,7 +7,7 @@
 
 import Foundation
 struct IngredientsModel {
-    let units = ["g": "gram", "kg": "kilogram", "mL": "millilitre", "L": "litre", "item": ""]
+    let units = ["g": "gram", "kg": "kilogram", "mL": "millilitre", "L": "litre", "item": "", "tsp": "teaspoon", "tbsp": "tablespoon"]
     
     func getAmount(amount: Double) -> String {
         if amount.truncatingRemainder(dividingBy: 1) == 0{
