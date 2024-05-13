@@ -36,7 +36,7 @@ struct AddDescriptionView: View {
                                     .frame(width: 200, height: 200, alignment: .center)
                                     .foregroundColor(.lightGray)
                                 Image(systemName: "camera")
-                                    .tint(.teal)
+                                    .tint(.rose)
                                     .bold()
                             }
                         }
@@ -48,7 +48,7 @@ struct AddDescriptionView: View {
                 Text("Add a Title")
                     .multilineTextAlignment(.leading)
                     .bold()
-                    .foregroundColor(.teal)
+                    .foregroundColor(.rose)
                 
                 TextField("Title", text: $recipeViewModel.title,  axis: .vertical)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -60,7 +60,7 @@ struct AddDescriptionView: View {
                 Text("Add Description")
                     .multilineTextAlignment(.leading)
                     .bold()
-                    .foregroundColor(.teal)
+                    .foregroundColor(.rose)
                 
                 TextField("Description", text: $recipeViewModel.description, axis: .vertical)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -71,7 +71,7 @@ struct AddDescriptionView: View {
                 Text("Cooking Time")
                     .multilineTextAlignment(.leading)
                     .bold()
-                    .foregroundColor(.teal)
+                    .foregroundColor(.rose)
                 
                 HStack {
                     TextField("Cooking Time", text: $recipeViewModel.cookingTime)

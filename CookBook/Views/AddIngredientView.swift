@@ -35,12 +35,14 @@ struct AddIngredientView: View {
                     let descName = ingredientsModel.getDescName(amount: Double(amount) ?? 0, unit: unit, name: ingredient)
                     let newIngredient = Ingredient(name: ingredient, descName: descName, amount: unitModel)
                     recipeViewModel.ingredients.append(newIngredient)
+                    ingredient = ""
+                    amount = ""
                 } label: {
                     Text("Add")
                         .bold()
                 }.buttonStyle(.borderedProminent)
                 
-            }.tint(.teal)
+            }.tint(.rose)
             List {
                 ForEach(recipeViewModel.ingredients.indices, id: \.self) { index in
                     HStack{

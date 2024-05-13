@@ -24,7 +24,7 @@ struct AddStepsView: View {
                     Text("Add")
                         .bold()
                 }.buttonStyle(.borderedProminent)
-            }.tint(.teal)
+            }.tint(.rose)
             List {
                 ForEach(Array(recipeViewModel.steps.enumerated()), id: \.element) { index, step in
                     HStack{

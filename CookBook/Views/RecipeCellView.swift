@@ -38,6 +38,8 @@ struct RecipeCellView: View {
                 
                 Text(recipe.title)
                     .multilineTextAlignment(.leading)
+                    .foregroundColor(.black)
+                    .bold()
                 Spacer()
             })
 //
