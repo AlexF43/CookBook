@@ -1,5 +1,5 @@
-CookBook
+# CookBook
 
-Cookbook is an innovative cooking tool for all
+Cookbook is an innovative cooking tool for all, created as part of a university assignment.
 
-source code availavle at: https://github.com/AlexF43/CookBook
+Source code is availavle at: https://github.com/AlexF43/CookBook
