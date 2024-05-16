@@ -8,13 +8,9 @@
 import SwiftUI
 import PhotosUI
 
+// view for adding the description to a
 struct AddDescriptionView: View {
-    @State private var title: String = ""
-    @State private var description: String = ""
-    @State private var cookingTime: String = ""
     @State private var recipeImageItem: PhotosPickerItem?
-    @State private var recipeImage: Image?
-    //    @State private var imageData: Data?
     @ObservedObject var recipeViewModel: RecipeViewModel
     
     var body: some View {
@@ -55,8 +51,6 @@ struct AddDescriptionView: View {
                     .controlSize(.large)
                     .padding([.bottom], 20)
                 
-              
-                
                 Text("Add Description")
                     .multilineTextAlignment(.leading)
                     .bold()
@@ -65,8 +59,6 @@ struct AddDescriptionView: View {
                 TextField("Description", text: $recipeViewModel.description, axis: .vertical)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding([.bottom], 20)
-
-                
             
                 Text("Cooking Time")
                     .multilineTextAlignment(.leading)
@@ -83,12 +75,12 @@ struct AddDescriptionView: View {
 
             }
             
-            
+            // when the recipeImageItem from the photo picker is changed then try and convert the image into raw data form which can be stored by swiftdata
             .onChange(of: recipeImageItem) {
                 Task {
+                    // try to convert the image to data
                     if let loaded = try? await recipeImageItem?.loadTransferable(type: Data.self) {
                         recipeViewModel.imageData = loaded
-                        
                     } else {
                         print("Failed")
                     }
@@ -99,7 +91,3 @@ struct AddDescriptionView: View {
     }
 }
 
-
-//#Preview {
-//    AddDescriptionView()
-//}

@@ -15,6 +15,7 @@ class RecipeViewModel: ObservableObject {
     @Published var ingredients: [Ingredient] = []
     @Published var steps: [Step] = []
     @Published var imageData: Data?
+    @Published var saved: Bool = false
     
     func createRecipe() -> Recipe {
         let newRecipe = Recipe(id: nil, title: title, description: description, imageData: imageData, cookingTime: Int(cookingTime) ?? 0, ingredients: ingredients, steps: steps)

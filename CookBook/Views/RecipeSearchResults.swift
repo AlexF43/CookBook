@@ -10,8 +10,8 @@ import SwiftUI
 struct RecipeSearchResults: View {
     @ObservedObject var homeViewModel: HomeViewModel
     @State var searchedRecipes: [Recipe]
-    @State var selectedRecipe: Recipe? = nil
-    @State var isLoading: Bool = false
+//    @State var selectedRecipe: Recipe? = nil
+//    @State var isLoading: Bool = false
     var body: some View {
         List {
             ForEach(searchedRecipes) { recipe in
