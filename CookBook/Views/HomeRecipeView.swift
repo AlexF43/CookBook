@@ -34,7 +34,3 @@ struct HomeRecipeView: View {
        
     
 }
-
-//#Preview {
-//    HomeRecipeView(recipe: Recipe(title: "Recipe", description: "tester recipe", cookingTime: 20, ingredients: [], steps: [], imgURL: "https://sallysbakingaddiction.com/wp-content/uploads/2019/11/homemade-sandwich-bread.jpg"))
-//}

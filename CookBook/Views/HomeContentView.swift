@@ -13,11 +13,10 @@ struct HomeContentView: View {
     @Query(sort: \Recipe.dateTimeAdded, order: .reverse) private var recipes: [Recipe]
     @ObservedObject var homeViewModel: HomeViewModel
     @State private var trivia: String?
-    let columns = [GridItem(.flexible()), GridItem(.flexible())]
-    @State private var tabSelection = 0
+//    let columns = [GridItem(.flexible()), GridItem(.flexible())]
+//    @State private var tabSelection = 0
     @State private var randomRecipes: [Recipe] = []
     var body: some View {
-        //    @State var recipesFromSearch: [Recipe]
         
         NavigationStack{
             

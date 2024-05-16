@@ -28,6 +28,3 @@ struct IngredientCellView: View {
     }
 }
 
-//#Preview {
-//    IngredientCellView(ingredient: <#T##Ingredient#>)
-//}

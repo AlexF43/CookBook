@@ -10,8 +10,7 @@ import SwiftUI
 struct AddStepsView: View {
     @ObservedObject var recipeViewModel: RecipeViewModel
     @State private var step: String = ""
-    @State private var number: Int = 0
-//    @State private var steps = [String]()
+    
     var body: some View {
         VStack{
             HStack {

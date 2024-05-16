@@ -11,7 +11,7 @@ struct SearchView: View {
     @ObservedObject var homeViewModel: HomeViewModel
     
     var body: some View{
-//        Text("Searching for \(homeViewModel.searchText)")
+        //search bar ar top of home page to search for recipes in the api
         EmptyView()
             .searchable(text: $homeViewModel.searchText, isPresented: $homeViewModel.searchIsActive, prompt: "search for something new")
     }
