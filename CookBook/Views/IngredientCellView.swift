@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//shows each ingredient, used in the recipe detail views to show ingredients used in each step
 struct IngredientCellView: View {
     var ingredient: Ingredient
     var body: some View {

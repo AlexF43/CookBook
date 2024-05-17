@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+//the whole cookbook view, using recipe row views for each recipe stored in the cookbook
 struct CookBookView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var recipes: [Recipe]

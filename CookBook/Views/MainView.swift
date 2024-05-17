@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+//creating the tabs at the bottom, which allows the navigation between the three main screens
 struct MainView: View {
+    
     @State private var tabSelection = 1
     var body: some View {
         TabView(selection: $tabSelection) {

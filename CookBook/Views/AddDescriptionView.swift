@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 
-// view for adding the description to a
+// view for adding the description to a recipe that is input by the user
 struct AddDescriptionView: View {
     @State private var recipeImageItem: PhotosPickerItem?
     @ObservedObject var recipeViewModel: RecipeViewModel

@@ -7,19 +7,17 @@
 
 import SwiftUI
 import SwiftData
-
+// the main and default screen for the app
 struct HomeContentView: View {
+
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Recipe.dateTimeAdded, order: .reverse) private var recipes: [Recipe]
     @ObservedObject var homeViewModel: HomeViewModel
     @State private var trivia: String?
-//    let columns = [GridItem(.flexible()), GridItem(.flexible())]
-//    @State private var tabSelection = 0
     @State private var randomRecipes: [Recipe] = []
     var body: some View {
         
         NavigationStack{
-            
             ScrollView{
                 VStack(alignment: .leading) {
                     
@@ -31,7 +29,7 @@ struct HomeContentView: View {
                     Text("Recently Saved")
                         .bold()
                     
-                    ScrollView(.horizontal, showsIndicators: false) { //These ones will be random
+                    ScrollView(.horizontal, showsIndicators: false) { //These ones are the most recent saved from the user
                         HStack{
                             ForEach(recipes) { recipe in
                                 NavigationLink {
@@ -63,7 +61,6 @@ struct HomeContentView: View {
                         .padding([.top], 20)
                     ScrollView(.horizontal, showsIndicators: false) { // These will be set by us
                         HStack{
-                            //                            ForEach(1..<10) { pick in
                             NavigationLink {
                                 RecipeDetailView(recipe: Recipe(id: 0, title: "new recipe", description: "test", imageUrl: "https://sallysbakingaddiction.com/wp-content/uploads/2019/11/homemade-sandwich-bread.jpg", imageData: nil, cookingTime: 20, ingredients: [], steps: []))
                             } label: {
@@ -101,9 +98,8 @@ struct HomeContentView: View {
                 }.navigationTitle("Home")
                  .padding(10)
             }
-                
+            //gets the trivia and the random recipes when the screen appears
             .onAppear() {
-                print("hello")
                 if (trivia == nil) {
                     RecipeSearchService().getRandomFoodTrivia() { randomTrivia in
                         trivia = randomTrivia

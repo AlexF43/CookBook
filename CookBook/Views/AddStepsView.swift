@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//allows the user to add each step of the recipe individually
 struct AddStepsView: View {
     @ObservedObject var recipeViewModel: RecipeViewModel
     @State private var step: String = ""
@@ -24,6 +25,8 @@ struct AddStepsView: View {
                         .bold()
                 }.buttonStyle(.borderedProminent)
             }.tint(.rose)
+            
+            //lists each of the recipe's steps as created by the user. The numbers automatically update
             List {
                 ForEach(Array(recipeViewModel.steps.enumerated()), id: \.element) { index, step in
                     HStack{

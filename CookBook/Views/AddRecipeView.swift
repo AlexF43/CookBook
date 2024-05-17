@@ -71,7 +71,7 @@ struct AddRecipeView: View {
                 }.buttonStyle(.borderedProminent)
                     .disabled(recipeViewModel.title.isEmpty || recipeViewModel.description.isEmpty || recipeViewModel.ingredients.isEmpty || recipeViewModel.steps.isEmpty)
                 
-                // automatiically navigates to the cookbookview when the recipe is saved
+                // automatically navigates to the cookbookview when the recipe is saved
                 NavigationLink(destination: CookBookView(), isActive: $recipeViewModel.saved) { EmptyView() }
             }
             // New Recipe title
