@@ -10,23 +10,7 @@ import SwiftData
 import UIKit
 import SwiftUI
 
-final class RecipeListApiResponse: Decodable {
-    var results: [Recipe];
-    var offset: Int;
-    var number: Int;
-    var totalResults: Int;
-}
-
-final class recipeDetailApiResponse: Codable {
-    var id : Int
-    var title: String
-    var image: String
-    var readyInMinutes: Int
-    var extendedIngredients: [Ingredient]
-    var analyzedInstructions: [StepApiResponse]
-}
-
-
+// swiftdata model of recipes to be stored
 @Model
 final class Recipe: Decodable {
     var id: UUID
@@ -40,6 +24,7 @@ final class Recipe: Decodable {
     var steps: [Step]?
     var dateTimeAdded: Date
     
+    // init for manually creating a recipe
     init(id: Int?, title: String, description: String? = nil, imageUrl: String?, imageData: Data?, cookingTime: Int, ingredients: [Ingredient]?, steps: [Step]?) {
         self.id = UUID()
         self.apiId = id
@@ -53,6 +38,7 @@ final class Recipe: Decodable {
         self.dateTimeAdded = .now
     }
     
+    // custom init to allow recipe to conform to decodable protocal and allows json responses from the api to be made into recipe objects
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = UUID()
@@ -64,8 +50,8 @@ final class Recipe: Decodable {
         self.dateTimeAdded = .now
     }
     
+    // decoding keys which match the json response from the api
     enum CodingKeys: CodingKey {
         case id, title, image, extendedIngredients, analyzedInstructions
       }
-    
 }

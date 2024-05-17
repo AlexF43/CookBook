@@ -12,8 +12,8 @@ struct AddIngredientView: View {
     @State private var ingredient: String = ""
     @State private var amount: String = ""
     @State private var unit: String = ""
-    let ingredientsModel = IngredientsModel()
     @ObservedObject var recipeViewModel: RecipeViewModel
+    let ingredientsModel = RecipeViewModel.IngredientsModel()
     
     var body: some View {
         VStack{
