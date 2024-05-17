@@ -108,9 +108,11 @@ struct RecipeDetailView: View {
             if let currentRecipe = savedRecipes.first(where: {$0.id == recipe.id}) {
                 recipe = currentRecipe
             } else {
+                if let id = recipe.apiId {
                 // if not then load it from the api using the api id
-                RecipeSearchService().getDetailedRecipe(recipeId: "\(recipe.apiId!)") { detailedRecipe in
-                    recipe = detailedRecipe
+                    RecipeSearchService().getDetailedRecipe(recipeId: "\(id)") { detailedRecipe in
+                        recipe = detailedRecipe
+                    }
                 }
             }
         }
