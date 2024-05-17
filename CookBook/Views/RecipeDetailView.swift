@@ -122,7 +122,7 @@ struct RecipeDetailView: View {
                     modelContext.delete(recipe)
                 } else {
                     // if the recipe is not in the database then make a new recipe with the same attributes, store it in the database and set the new recipe to be the datasource for this detail page
-                    let newRecipe = Recipe(id: recipe.apiId, title: recipe.title, imageData: recipe.userImportedImage, cookingTime: recipe.cookingTime ?? 0, ingredients: recipe.ingredients, steps: recipe.steps)
+                    let newRecipe = Recipe(id: recipe.apiId, title: recipe.title, imageUrl: recipe.imgUrl, imageData: recipe.userImportedImage, cookingTime: recipe.cookingTime ?? 0, ingredients: recipe.ingredients, steps: recipe.steps)
                     modelContext.insert(newRecipe)
                     recipe = newRecipe
                 }

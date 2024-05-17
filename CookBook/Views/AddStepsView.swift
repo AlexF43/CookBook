@@ -14,9 +14,12 @@ struct AddStepsView: View {
     
     var body: some View {
         VStack{
+            
+            // adding a user inputted step to the list of steps
             HStack {
                 TextField("Step", text: $step)
                     .textFieldStyle(.roundedBorder)
+                // button adds the current step to the list
                 Button {
                     recipeViewModel.steps.append(Step(number: 0, name: step))
                     step = ""
@@ -26,13 +29,15 @@ struct AddStepsView: View {
                 }.buttonStyle(.borderedProminent)
             }.tint(.rose)
             
-            //lists each of the recipe's steps as created by the user. The numbers automatically update
+            //lists each of the recipe's steps by the user. The numbers automatically update
             List {
                 ForEach(Array(recipeViewModel.steps.enumerated()), id: \.element) { index, step in
                     HStack{
                         Text("\(index + 1). ")
                         Text("\(recipeViewModel.steps[index].name)")
                         Spacer()
+                        
+                        // remove button on each of the steps
                         Button {
                             recipeViewModel.steps.remove(at: index)
                         } label: {
@@ -46,7 +51,3 @@ struct AddStepsView: View {
         }
     }
 }
-//
-//#Preview {
-//    AddStepsView()
-//}
