@@ -32,5 +32,27 @@ class RecipeViewModel: ObservableObject {
             steps[i].number = i + 1
         }
     }
+    
+    struct IngredientsModel {
+        let units = ["g": "gram", "kg": "kilogram", "mL": "millilitre", "L": "litre", "item": "", "tsp": "teaspoon", "tbsp": "tablespoon"]
+        
+        func getAmount(amount: Double) -> String {
+            if amount.truncatingRemainder(dividingBy: 1) == 0{
+                return String(Int(amount))
+            } else {
+                return String(amount)
+            }
+        }
+        
+        func getDescName(amount: Double, unit: String, name: String) -> String {
+            let amountString: String = getAmount(amount: amount)
+            if amount > 1 {
+                return ("\(amountString) \(unit)s of \(name)")
+            } else {
+                return ("\(amountString) \(unit) of \(name)")
+            }
+        }
+        
+    }
 
 }

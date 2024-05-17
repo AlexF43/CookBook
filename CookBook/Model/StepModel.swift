@@ -7,11 +7,13 @@
 
 import Foundation
 
+// model of an individual step
 struct Step: Codable, Identifiable, Hashable {
+    
+    // allows steps to be compared and identified
     static func == (lhs: Step, rhs: Step) -> Bool {
         return lhs.id == rhs.id
     }
-    
     
     var id: UUID = UUID()
     var number: Int
@@ -24,6 +26,7 @@ struct Step: Codable, Identifiable, Hashable {
         self.ingredients = ingredients
     }
     
+    // conform to decodable
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.number = try container.decode(Int.self, forKey: .number)
@@ -31,6 +34,7 @@ struct Step: Codable, Identifiable, Hashable {
         self.ingredients = try container.decodeIfPresent([Ingredient].self, forKey: .ingredients)
     }
     
+    // conform to encodable
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(number, forKey: .number)
@@ -38,11 +42,13 @@ struct Step: Codable, Identifiable, Hashable {
         try container.encodeIfPresent(ingredients, forKey: .ingredients)
     }
     
+    // keys to match with the field names in the api response
     enum CodingKeys: CodingKey {
         case number, step, ingredients
     }
 }
 
+// api response for a step
 final class StepApiResponse: Codable {
     var name: String
     var steps: [Step]

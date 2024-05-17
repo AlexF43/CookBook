@@ -110,8 +110,8 @@
             filePath = "CookBook/Model/RecipeModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "CodingKeys"
             landmarkType = "13">
          </BreakpointContent>
@@ -126,8 +126,8 @@
             filePath = "CookBook/Model/RecipeModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "init(id:title:description:imageUrl:imageData:cookingTime:ingredients:steps:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -82,18 +82,20 @@ struct HomeContentView: View {
                         .bold()
                         .font(.system(size: 30))
                         .padding([.top], 20)
-                    
-                    Text("Recently Saved")
-                        .bold()
-                    
-                    ScrollView(.horizontal, showsIndicators: false) { //These ones are the most recent saved from the user
-                        HStack{
-                            ForEach(recipes) { recipe in
-                                NavigationLink {
-                                    RecipeDetailView(recipe: recipe)
-                                } label: {
-                                    RecipeCellView(recipe: recipe)
-                                        .frame(height: 200)
+                     
+                    if (!recipes.isEmpty) {
+                        Text("Recently Saved")
+                            .bold()
+                        
+                        ScrollView(.horizontal, showsIndicators: false) { //These ones are the most recent saved from the user
+                            HStack{
+                                ForEach(recipes) { recipe in
+                                    NavigationLink {
+                                        RecipeDetailView(recipe: recipe)
+                                    } label: {
+                                        RecipeCellView(recipe: recipe)
+                                            .frame(height: 200)
+                                    }
                                 }
                             }
                         }
