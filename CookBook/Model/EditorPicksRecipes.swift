@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// contains hardcoded editors picks recipes
 struct EditorPicksRecipes {
     var editorPicks: [Recipe] = [
         Recipe(id: nil, title: "Cheesy Potato and Bacon Lasagne", description: "Potato bake with a lasagne twist", imageUrl: "https://img.taste.com.au/0OZ2-PBz/w720-h480-cfill-q80/taste/2018/06/cheesy-potato-and-bacon-lasagne-138403-1.jpg", imageData: nil, cookingTime: 95, ingredients: [

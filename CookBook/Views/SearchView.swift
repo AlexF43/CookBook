@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// search bar for home screen
 struct SearchView: View {
     @ObservedObject var homeViewModel: HomeViewModel
     
@@ -18,6 +19,3 @@ struct SearchView: View {
     
 }
 
-#Preview {
-    SearchView(homeViewModel: HomeViewModel())
-}

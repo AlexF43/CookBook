@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// view showing the step instructions and ingredients for a single step in the recipe detail view
+/// view showing the step instructions and ingredients for a single step in the recipe detail view
 struct RecipeStepCardView: View {
     var step: Step
     var body: some View {
@@ -23,26 +23,30 @@ struct RecipeStepCardView: View {
                 // step name and number at top of card
                 Text("Step \(step.number)")
                     .bold()
-                Text("\(step.name)")
+                HStack {
+                    Text("\(step.name)")
+                    Spacer()
+                }
                 Spacer()
                 
                 // if ingredients exist then show their images and name in a horizontally scrolling carrosel
                 if let ingredients = step.ingredients {
-                    
-                    Text("Ingredients")
-                        .bold()
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack{
-                            
-                            // show each ingredient in their individual ingredient cell
-                            ForEach(ingredients) { ingredient in
-                                IngredientCellView(ingredient: ingredient)
+                    if (!ingredients.isEmpty) {
+                        Text("Ingredients")
+                            .bold()
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack{
+                                
+                                // show each ingredient in their individual ingredient cell
+                                ForEach(ingredients) { ingredient in
+                                    IngredientCellView(ingredient: ingredient)
+                                }
                             }
+                            .scrollTargetLayout()
                         }
-                        .scrollTargetLayout()
+                        .scrollTargetBehavior(.viewAligned)
                     }
-                    .scrollTargetBehavior(.viewAligned)
                 }
             }
             .padding(20)

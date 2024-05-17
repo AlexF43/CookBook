@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 
-// view for adding the description to a recipe that is input by the user
+/// view for adding the description to a recipe that is input by the user
 struct AddDescriptionView: View {
     @State private var recipeImageItem: PhotosPickerItem?
     @ObservedObject var recipeViewModel: RecipeViewModel
@@ -34,7 +34,7 @@ struct AddDescriptionView: View {
                             ZStack{
                                 Rectangle()
                                     .frame(width: 200, height: 200, alignment: .center)
-                                    .foregroundColor(.lightGray)
+                                    .foregroundColor(.lighterGray)
                                 Image(systemName: "camera")
                                     .tint(.rose)
                                     .bold()

@@ -7,7 +7,7 @@
 
 import Foundation
 
-// model for a amount and its respective unit
+/// model for a amount and its respective unit
 struct UnitModel: Codable, Hashable {
     var amount: Double
     var unit: String

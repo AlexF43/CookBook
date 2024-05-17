@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-// model for ingredient to be used in the recipe and step models
+/// model for ingredient to be used in the recipe and step models
 struct Ingredient: Codable, Identifiable, Hashable {
     
     // function which allow ingredients to be compared

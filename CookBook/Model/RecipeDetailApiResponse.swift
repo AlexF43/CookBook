@@ -7,7 +7,7 @@
 
 import Foundation
 
-// model api response for getting recipe detail
+/// model api response for getting recipe detail
 final class recipeDetailApiResponse: Codable {
     var id : Int
     var title: String

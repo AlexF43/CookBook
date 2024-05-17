@@ -10,7 +10,7 @@ import SwiftData
 import UIKit
 import SwiftUI
 
-// swiftdata model of recipes to be stored
+/// swiftdata model of recipes to be stored
 @Model
 final class Recipe: Decodable {
     var id: UUID

@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+/// view showing all infomation of a single recipe
 struct RecipeDetailView: View {
     // the swifdata database object and the list of recipes stored inside
     @Environment(\.modelContext) private var modelContext

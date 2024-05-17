@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//allows the user to add each step of the recipe individually
+/// allows the user to add each step of the recipe individually
 struct AddStepsView: View {
     @ObservedObject var recipeViewModel: RecipeViewModel
     @State private var step: String = ""

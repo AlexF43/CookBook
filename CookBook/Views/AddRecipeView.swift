@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-// root view for adding a recipe, contains each of the child views which are able to be selected between to edit specific parts of each recipe
+/// root view for adding a recipe, contains each of the child views which are able to be selected between to edit specific parts of each recipe
 struct AddRecipeView: View {
     // swift data model context used to make changes to the database
     @Environment(\.modelContext) private var modelContext
@@ -16,6 +16,7 @@ struct AddRecipeView: View {
     // model of the recipe being created, also contains functions to save the recipe
     @StateObject private var recipeViewModel = RecipeViewModel()
     @State private var tabSelection: Int = 0
+    @State private var finishedEditing: Bool = false
     let tabOptions: [String] = ["DESC", "INGREDIENTS", "STEPS"]
 
     var body: some View {
@@ -72,20 +73,25 @@ struct AddRecipeView: View {
                     .disabled(recipeViewModel.title.isEmpty || recipeViewModel.description.isEmpty || recipeViewModel.ingredients.isEmpty || recipeViewModel.steps.isEmpty)
                 
                 // automatically navigates to the cookbookview when the recipe is saved
-                NavigationLink(destination: CookBookView(), isActive: $recipeViewModel.saved) { EmptyView() }
+                NavigationLink(destination: CookBookView(), isActive: $finishedEditing) { EmptyView() }
             }
             // New Recipe title
             .navigationTitle("New Recipe")
                 .padding(10)
         }
+        .onAppear() {
+            finishedEditing = false
+        }
     }
     
-    // creates a recipe object from all the entered data and saves it to the swiftdata database
+    /// creates a recipe object from all the entered data and saves it to the swiftdata database
     func saveRecipe() {
         recipeViewModel.updateStepNumbers()
         let newRecipe = recipeViewModel.createRecipe()
         modelContext.insert(newRecipe)
         recipeViewModel.saved = true
+        recipeViewModel.clear()
+        finishedEditing = true
     }
 }
 

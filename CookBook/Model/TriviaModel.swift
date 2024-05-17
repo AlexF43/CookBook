@@ -7,7 +7,7 @@
 
 import Foundation
 
-// api response for the trivia api
+/// api response for the trivia api
 final class TriviaResponse: Decodable{
     var trivia: String
     

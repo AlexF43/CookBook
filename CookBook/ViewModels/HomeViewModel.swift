@@ -7,7 +7,7 @@
 
 import Foundation
 
-// view model for home screen
+/// view model for home screen
 class HomeViewModel: ObservableObject {
     // text currently in search bar
     @Published var searchText: String = ""

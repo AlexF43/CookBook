@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// parent home view
+/// parent home view
 struct HomeView: View {
     @StateObject var homeViewModel = HomeViewModel()
     
@@ -21,7 +21,7 @@ struct HomeView: View {
             if(homeViewModel.searchIsActive) {
                 RecipeSearchResults(homeViewModel: homeViewModel, searchedRecipes: [])
             } else {
-                HomeContentView(homeViewModel: homeViewModel)
+                HomeContentView()
             }
         }
         .navigationTitle("Home")

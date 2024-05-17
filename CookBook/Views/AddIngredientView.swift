@@ -1,4 +1,3 @@
-//
 //  AddIngredientView.swift
 //  CookBook
 //
@@ -7,48 +6,48 @@
 
 import SwiftUI
 
-// a view to add ingredients to a recipe input by the user
+/// child view to add recipe view to add ingredients to the recipe
 struct AddIngredientView: View {
-    @State private var ingredient: String = ""
-    @State private var amount: String = ""
-    @State private var unit: String = ""
+    @StateObject var addIngredientViewModel = AddIngredientViewModel()
     @ObservedObject var recipeViewModel: RecipeViewModel
-    let ingredientsModel = RecipeViewModel.IngredientsModel()
+    let ingredientsModel = AddIngredientViewModel.IngredientsModel()
     
     var body: some View {
         VStack{
             HStack {
-                TextField("Ingredient", text: $ingredient)
+                // textfield to enter ingredients
+                TextField("Ingredient", text: $addIngredientViewModel.ingredient)
                     .textFieldStyle(.roundedBorder)
-
-                TextField("Amount", text: $amount)
+                
+                // textfield to enter the respective amount of the ingredient
+                TextField("Amount", text: $addIngredientViewModel.amount)
                     .textFieldStyle(.roundedBorder)
-
-                Picker("Select a unit", selection: $unit) {
+                
+                // picker to select the unit
+                Picker("Select a unit", selection: $addIngredientViewModel.unit) {
                     ForEach(Array(ingredientsModel.units.keys), id: \.self) {
                         Text($0)
                     }
                 }
                 .pickerStyle(.menu)
-
+                
+                // button to call function to add ingredient to the ingredient list
                 Button {
-                    let unitModel = UnitModel(amount: Double(amount) ?? 0, unit: unit)
-                    let descName = ingredientsModel.getDescName(amount: Double(amount) ?? 0, unit: unit, name: ingredient)
-                    let newIngredient = Ingredient(name: ingredient, descName: descName, amount: unitModel)
-                    recipeViewModel.ingredients.append(newIngredient)
-                    ingredient = ""
-                    amount = ""
+                    addIngredient()
                 } label: {
                     Text("Add")
                         .bold()
                 }.buttonStyle(.borderedProminent)
                 
             }.tint(.rose)
+            
+            // list of all current ingredients
             List {
                 ForEach(recipeViewModel.ingredients.indices, id: \.self) { index in
                     HStack{
                         Text("\(recipeViewModel.ingredients[index].descName ?? "")")
                         Spacer()
+                        // button to remove ingredient from list
                         Button {
                             recipeViewModel.ingredients.remove(at: index)
                         } label: {
@@ -60,8 +59,16 @@ struct AddIngredientView: View {
                 }
             }
         }
-    
+        
     }
-        
-        
+    
+    /// generates a unitmodel, descriptive name and finally the ingredient model and adds it to the list of ingredients
+    func addIngredient() {
+        let unitModel = UnitModel(amount: Double(addIngredientViewModel.amount) ?? 0, unit: addIngredientViewModel.unit)
+        let descName = ingredientsModel.getDescName(amount: Double(addIngredientViewModel.amount) ?? 0, unit: addIngredientViewModel.unit, name: addIngredientViewModel.ingredient)
+        let newIngredient = Ingredient(name: addIngredientViewModel.ingredient, descName: descName, amount: unitModel)
+        recipeViewModel.ingredients.append(newIngredient)
+        addIngredientViewModel.ingredient = ""
+        addIngredientViewModel.amount = ""
+    }
 }
