@@ -6,19 +6,18 @@
 //
 
 import SwiftUI
-import SwiftData
 
+// parent home view
 struct HomeView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var recipes: [Recipe]
     @StateObject var homeViewModel = HomeViewModel()
-    //    @State var recipesFromSearch: [Recipe]
     
     var body: some View {
         NavigationStack{
-            
+        
+            // always display the search bar at the top of the home view
             SearchView(homeViewModel: homeViewModel)
                 .fixedSize()
+            // if the search bar is currently active then show search results, if it is not active then show home content
             if(homeViewModel.searchIsActive) {
                 RecipeSearchResults(homeViewModel: homeViewModel, searchedRecipes: [])
             } else {
@@ -28,10 +27,4 @@ struct HomeView: View {
         .navigationTitle("Home")
        
     }
-}
-
-
-
-#Preview {
-    HomeView()
 }

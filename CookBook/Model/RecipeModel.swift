@@ -40,7 +40,7 @@ final class Recipe: Decodable {
     var steps: [Step]?
     var dateTimeAdded: Date
     
-    init(id: Int?, title: String, description: String? = nil, imageUrl: String? = nil, imageData: Data?, cookingTime: Int, ingredients: [Ingredient]?, steps: [Step]?) {
+    init(id: Int?, title: String, description: String? = nil, imageUrl: String?, imageData: Data?, cookingTime: Int, ingredients: [Ingredient]?, steps: [Step]?) {
         self.id = UUID()
         self.apiId = id
         self.title = title

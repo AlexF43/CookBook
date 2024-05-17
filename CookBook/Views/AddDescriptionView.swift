@@ -18,7 +18,10 @@ struct AddDescriptionView: View {
             VStack(alignment: .leading){
                 HStack{
                     Spacer()
+                    
+                    // photos picker that allows a user to select an image from their camera roll
                     PhotosPicker(selection: $recipeImageItem, matching: .images) {
+                        // if an image has been selected display it
                         if let recipeImageData = recipeViewModel.imageData,
                            let uiImage = UIImage(data: recipeImageData) {
                             Image(uiImage: uiImage)
@@ -27,6 +30,7 @@ struct AddDescriptionView: View {
                                 .frame(width: 250, height: 250, alignment: .center)
                             
                         } else {
+                            // if no image has been selected then show a default camera icon
                             ZStack{
                                 Rectangle()
                                     .frame(width: 200, height: 200, alignment: .center)
@@ -41,6 +45,7 @@ struct AddDescriptionView: View {
                     Spacer()
                 }.padding([.bottom], 20)
                 
+                // adding title
                 Text("Add a Title")
                     .multilineTextAlignment(.leading)
                     .bold()
@@ -51,6 +56,7 @@ struct AddDescriptionView: View {
                     .controlSize(.large)
                     .padding([.bottom], 20)
                 
+                // adding description
                 Text("Add Description")
                     .multilineTextAlignment(.leading)
                     .bold()
@@ -60,6 +66,7 @@ struct AddDescriptionView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding([.bottom], 20)
             
+                // adding cooking time
                 Text("Cooking Time")
                     .multilineTextAlignment(.leading)
                     .bold()

@@ -7,8 +7,11 @@
 
 import Foundation
 
+// view model for home screen
 class HomeViewModel: ObservableObject {
+    // text currently in search bar
     @Published var searchText: String = ""
+    // if the search bar is currently selected
     @Published var searchIsActive: Bool = false
     
 }
