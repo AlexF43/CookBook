@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// a view to add ingredients to a recipe input by the user
 struct AddIngredientView: View {
     @State private var ingredient: String = ""
     @State private var amount: String = ""

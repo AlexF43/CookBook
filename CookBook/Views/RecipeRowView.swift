@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//Shows each recipe in the cookbook as an individual view
 struct RecipeRowView: View {
     var recipe: Recipe;
     var body: some View {
@@ -20,13 +21,10 @@ struct RecipeRowView: View {
             }
             if let recipeImage = recipe.imgUrl {
                 AsyncImage(url: URL(string: recipeImage)) { image in
-                   
                     image.image?.resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 100, height: 100)
-                    
                 }
-                 
             }
             VStack(alignment: .leading, content: {
                 
@@ -35,7 +33,6 @@ struct RecipeRowView: View {
                 Text(recipe.desc ?? "")
                     .foregroundColor(.gray)
                 
-
                 if(recipe.cookingTime != nil) {
                     HStack{
                         Image(systemName: "clock")
@@ -45,7 +42,6 @@ struct RecipeRowView: View {
                     }
                 }
             })
-//            .multilineTextAlignment(.leading)
         }.padding(0)
     }
 }
