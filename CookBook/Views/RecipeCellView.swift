@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// Cell view showing an image and the recipe title for the scrollviews on the home detail view
+/// Cell view showing an image and title of the respective recipe
 struct RecipeCellView: View {
     var recipe: Recipe
     var body: some View {

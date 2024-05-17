@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//creating the tabs at the bottom of all views, allowing the navigation between the three main screens
+/// creating the tabs at the bottom of all views, allowing the navigation between the three main screens
 struct MainView: View {
     
     // current selected tab tag number default value of 1 to have home as the default view

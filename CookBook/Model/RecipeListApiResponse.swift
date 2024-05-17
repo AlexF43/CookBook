@@ -7,7 +7,7 @@
 
 import Foundation
 
-// model of recipe search api response
+/// model of recipe search api response
 final class RecipeListApiResponse: Decodable {
     var results: [Recipe];
     var offset: Int;

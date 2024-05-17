@@ -7,7 +7,7 @@
 
 import Foundation
 
-// model of an individual step
+/// model of an individual step
 struct Step: Codable, Identifiable, Hashable {
     
     // allows steps to be compared and identified

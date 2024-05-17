@@ -7,19 +7,19 @@
 
 import SwiftUI
 import SwiftData
-// the main and default screen for the app
+/// the main and default screen for the app
 struct HomeContentView: View {
-
-    @Environment(\.modelContext) private var modelContext
-    @Query(sort: \Recipe.dateTimeAdded, order: .reverse) private var recipes: [Recipe]
-    @ObservedObject var homeViewModel: HomeViewModel
-    @State private var trivia: String?
-    @State private var randomRecipes: [Recipe] = []
-    var editorPicks = EditorPicksRecipes().editorPicks
     
+    // swiftdata response of recipes ordered from newest added to oldest
+    @Query(sort: \Recipe.dateTimeAdded, order: .reverse) private var recipes: [Recipe]
+    // random trivia from the api
+    @State private var triviaResponse: String?
+    // random recipes from the api
+    @State private var randomRecipes: [Recipe] = []
+    // conains the editors favourite recipes to display
+    var editorPicks: [Recipe] = EditorPicksRecipes().editorPicks
     
     var body: some View {
-        
         NavigationStack{
             ScrollView{
                 VStack(alignment: .leading) {
@@ -28,12 +28,14 @@ struct HomeContentView: View {
                         .bold()
                         .font(.system(size: 30))
                         .padding([.top], 20)
-                     
+                    
+                    // if there there are any recipes in the recipe list then display them in the order of most recently saved to least
                     if (!recipes.isEmpty) {
                         Text("Recently Saved")
                             .bold()
                         
-                        ScrollView(.horizontal, showsIndicators: false) { //These ones are the most recent saved from the user
+                        // horizontal scroll view containing the each recipe in a cell view which when clicked on takes the user to that recipes detail view
+                        ScrollView(.horizontal, showsIndicators: false) {
                             HStack{
                                 ForEach(recipes) { recipe in
                                     NavigationLink {
@@ -46,89 +48,78 @@ struct HomeContentView: View {
                             }
                         }
                     }
-                    Text("Try something new")
-                        .bold()
-                        .padding([.top], 20)
-                    ScrollView(.horizontal, showsIndicators: false) { //These ones will be random
-                        HStack{
-                            ForEach(randomRecipes) { recipe in
-                                NavigationLink {
-                                    RecipeDetailView(recipe: recipe)
-                                } label: {
-                                    RecipeCellView(recipe: recipe)
-                                        .frame(height: 200)
-                                }
-                            }
-                        }
-                    }
-                    Text("Editor's Picks")
-                        .bold()
-                        .padding([.top], 20)
-                    ScrollView(.horizontal, showsIndicators: false) { // These will be set by us
-                        HStack{
-                            NavigationLink {
-                                RecipeDetailView(recipe: editorPicks[0])
-                            } label: {
-                                RecipeCellView(recipe: editorPicks[0])
-                                .frame(height: 200)
-                            }
-                            
-                            NavigationLink {
-                                RecipeDetailView(recipe: editorPicks[1])
-                                } label : {
-                                    RecipeCellView(recipe: editorPicks[1])
-                                    .frame(height: 200)
-                                }
-                        
-                            NavigationLink {
-                                RecipeDetailView(recipe: editorPicks[2])
-                                } label: {
-                                RecipeCellView(recipe: editorPicks[2])
-                                    .frame(height: 200)
-                            }
-                        }
-                    }
-                }
-        
                     
-                 
-                Text("Fun trivia fact")
-                    .bold()
-                    .padding([.top], 20)
+                    // if there are random recipes (if they were able to be fetched from the api) then display them
+                    if (!randomRecipes.isEmpty) {
+                        Text("Try something new")
+                            .bold()
+                            .padding([.top], 20)
                         
-                Text(trivia ?? "")
-                    .italic()
-                    .foregroundColor(.gray)
+                        // horizontal scroll view containing the each recipe in a cell view which when clicked on takes the user to that recipes detail view
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack{
+                                ForEach(randomRecipes) { recipe in
+                                    NavigationLink {
+                                        RecipeDetailView(recipe: recipe)
+                                    } label: {
+                                        RecipeCellView(recipe: recipe)
+                                            .frame(height: 200)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    // if the editors picks list is not empty then display them
+                    if (!editorPicks.isEmpty) {
+                        Text("Editor's Picks")
+                            .bold()
+                            .padding([.top], 20)
                         
-                }.navigationTitle("Home")
-                 .padding(10)
-            }
-            //gets the trivia and the random recipes when the screen appears
-            .onAppear() {
-                if (trivia == nil) {
-                    RecipeSearchService().getRandomFoodTrivia() { randomTrivia in
-                        trivia = randomTrivia
+                        // horizontal scroll view containing the each recipe in a cell view which when clicked on takes the user to that recipes detail view
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack{
+                                ForEach(editorPicks) { recipe in
+                                    NavigationLink {
+                                        RecipeDetailView(recipe: recipe)
+                                    } label: {
+                                        RecipeCellView(recipe: recipe)
+                                            .frame(height: 200)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    // if the trivia is not nil then display it
+                    if let trivia = triviaResponse {
+                        Text("Fun trivia fact")
+                            .bold()
+                            .padding([.top], 20)
+                        
+                        Text(trivia)
+                            .italic()
+                            .foregroundColor(.gray)
                     }
                 }
                 
-                if (randomRecipes.isEmpty) {
-                    RecipeSearchService().getRandomRecipes() { recipes in
-                        randomRecipes = recipes
-                    }
-                }
-            }
-                
+            }.navigationTitle("Home")
+                .padding(10)
         }
-    
-    mutating func populateEditorPicks() {
-       
+        //gets the trivia and the random recipes from the api when the screen appears if they do not already exist
+        .onAppear() {
+            if (triviaResponse == nil) {
+                RecipeSearchService().getRandomFoodTrivia() { randomTrivia in
+                    triviaResponse = randomTrivia
+                }
+            }
+            
+            if (randomRecipes.isEmpty) {
+                RecipeSearchService().getRandomRecipes() { recipes in
+                    randomRecipes = recipes
+                }
+            }
         }
         
     }
-    
-
-
-    
-#Preview {
-    HomeContentView(homeViewModel: HomeViewModel())
 }

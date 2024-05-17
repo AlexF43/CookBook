@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-// view displays the results of the search in searchview
+/// view displays the results of the search in searchview
 struct RecipeSearchResults: View {
     @ObservedObject var homeViewModel: HomeViewModel
     
-    // the results of the current search
+    /// the results of the current search
     @State var searchedRecipes: [Recipe]
     
     var body: some View {
